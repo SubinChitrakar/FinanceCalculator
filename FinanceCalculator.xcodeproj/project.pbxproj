@@ -13,8 +13,10 @@
 		DFBEA582240161CE0054E70E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFBEA580240161CE0054E70E /* Main.storyboard */; };
 		DFBEA584240161CF0054E70E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFBEA583240161CF0054E70E /* Assets.xcassets */; };
 		DFBEA587240161CF0054E70E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFBEA585240161CF0054E70E /* LaunchScreen.storyboard */; };
-		DFBEA58F2401637A0054E70E /* MortgageLoanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBEA58E2401637A0054E70E /* MortgageLoanViewController.swift */; };
 		DFBEA594240176B50054E70E /* CompoundSavings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBEA593240176B50054E70E /* CompoundSavings.swift */; };
+		DFBEA59724017FA30054E70E /* CalculationCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBEA59624017FA30054E70E /* CalculationCases.swift */; };
+		DFD8C168240193C9001E8B8F /* MortgageAndLoansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD8C167240193C9001E8B8F /* MortgageAndLoansViewController.swift */; };
+		DFD8C16A2401A05F001E8B8F /* MortagageAndLoans.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD8C1692401A05F001E8B8F /* MortagageAndLoans.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +28,10 @@
 		DFBEA583240161CF0054E70E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFBEA586240161CF0054E70E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DFBEA588240161CF0054E70E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DFBEA58E2401637A0054E70E /* MortgageLoanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MortgageLoanViewController.swift; sourceTree = "<group>"; };
 		DFBEA593240176B50054E70E /* CompoundSavings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompoundSavings.swift; sourceTree = "<group>"; };
+		DFBEA59624017FA30054E70E /* CalculationCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationCases.swift; sourceTree = "<group>"; };
+		DFD8C167240193C9001E8B8F /* MortgageAndLoansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MortgageAndLoansViewController.swift; sourceTree = "<group>"; };
+		DFD8C1692401A05F001E8B8F /* MortagageAndLoans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MortagageAndLoans.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,15 +64,16 @@
 		DFBEA579240161CE0054E70E /* FinanceCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				DFBEA5902401663C0054E70E /* Formulas */,
+				DFBEA588240161CF0054E70E /* Info.plist */,
 				DFBEA57A240161CE0054E70E /* AppDelegate.swift */,
 				DFBEA57C240161CE0054E70E /* CompoundSavingsViewController.swift */,
+				DFD8C167240193C9001E8B8F /* MortgageAndLoansViewController.swift */,
 				DFBEA57E240161CE0054E70E /* SavingsViewController.swift */,
-				DFBEA580240161CE0054E70E /* Main.storyboard */,
 				DFBEA583240161CF0054E70E /* Assets.xcassets */,
+				DFBEA5902401663C0054E70E /* Formulas */,
 				DFBEA585240161CF0054E70E /* LaunchScreen.storyboard */,
-				DFBEA588240161CF0054E70E /* Info.plist */,
-				DFBEA58E2401637A0054E70E /* MortgageLoanViewController.swift */,
+				DFBEA580240161CE0054E70E /* Main.storyboard */,
+				DFBEA59524017F770054E70E /* Utilities */,
 			);
 			path = FinanceCalculator;
 			sourceTree = "<group>";
@@ -77,8 +82,17 @@
 			isa = PBXGroup;
 			children = (
 				DFBEA593240176B50054E70E /* CompoundSavings.swift */,
+				DFD8C1692401A05F001E8B8F /* MortagageAndLoans.swift */,
 			);
 			path = Formulas;
+			sourceTree = "<group>";
+		};
+		DFBEA59524017F770054E70E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				DFBEA59624017FA30054E70E /* CalculationCases.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,8 +166,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFD8C16A2401A05F001E8B8F /* MortagageAndLoans.swift in Sources */,
 				DFBEA594240176B50054E70E /* CompoundSavings.swift in Sources */,
-				DFBEA58F2401637A0054E70E /* MortgageLoanViewController.swift in Sources */,
+				DFBEA59724017FA30054E70E /* CalculationCases.swift in Sources */,
+				DFD8C168240193C9001E8B8F /* MortgageAndLoansViewController.swift in Sources */,
 				DFBEA57F240161CE0054E70E /* SavingsViewController.swift in Sources */,
 				DFBEA57B240161CE0054E70E /* AppDelegate.swift in Sources */,
 				DFBEA57D240161CE0054E70E /* CompoundSavingsViewController.swift in Sources */,

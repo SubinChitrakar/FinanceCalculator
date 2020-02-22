@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  MortgageAndLoansViewController.swift
 //  FinanceCalculator
 //
 //  Created by Subin Chitrakar on 22/02/2020.
@@ -8,24 +8,24 @@
 
 import UIKit
 
-
-class CompoundSavingsViewController: UIViewController {
+class MortgageAndLoansViewController: UIViewController {
 
     @IBOutlet weak var txtPrincipleAmount: UITextField!
     @IBOutlet weak var txtInterestRate: UITextField!
     @IBOutlet weak var txtTimePeriod: UITextField!
-    @IBOutlet weak var txtCompoundAmount: UITextField!
+    @IBOutlet weak var txtMonthlyPaymentAmount: UITextField!
     
     var emptyField = CalculationCases.empty
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
     
     @IBAction func calculateValues(_ sender: UIButton) {
         var emptyFieldCounter = 0
-        let result : Double
+        var result : Double = 0
         
         let principleAmount: Double! = Double(txtPrincipleAmount.text!)
         if(principleAmount == nil){
@@ -36,8 +36,7 @@ class CompoundSavingsViewController: UIViewController {
         let interestRate: Double! = Double(txtInterestRate.text!)
         if(interestRate == nil)
         {
-            emptyField = CalculationCases.interestRate
-            emptyFieldCounter += 1
+            return
         }
         
         let timePeriod: Double! = Double(txtTimePeriod.text!)
@@ -47,10 +46,10 @@ class CompoundSavingsViewController: UIViewController {
             emptyFieldCounter += 1
         }
         
-        let compoundSaving: Double! = Double(txtCompoundAmount.text!)
-        if(compoundSaving == nil)
+        let monthlyPayment: Double! = Double(txtMonthlyPaymentAmount.text!)
+        if(monthlyPayment == nil)
         {
-            emptyField = CalculationCases.futureAmount
+            emptyField = CalculationCases.monthlyPaymentAmount
             emptyFieldCounter += 1
         }
         
@@ -59,27 +58,13 @@ class CompoundSavingsViewController: UIViewController {
             return
         }
         
+        
         switch emptyField {
-        
-        case .futureAmount:
-            result = CompoundSavings.getCompoundSavingsAmount(principleAmount: principleAmount, interestRate: interestRate, timePeriod: timePeriod)
-            txtCompoundAmount.text = String(format: "%.2f", result)
-        
-        case .principleAmount:
-            result = CompoundSavings.getPrincipleAmount(compoundSaving: compoundSaving, interestRate: interestRate, timePeriod: timePeriod)
-            txtPrincipleAmount.text = String(format: "%.2f", result)
             
-        case .interestRate:
-            result = CompoundSavings.getInterestRate(compoundSaving: compoundSaving, principleAmount: principleAmount, timePeriod: timePeriod)
-            txtInterestRate.text = String(format: "%.2f", result * 100)
             
-        case .timePeriod:
-            result = CompoundSavings.getTimePeriod(compoundInterest: compoundSaving, principleAmount: principleAmount, interestRate: interestRate)
-            txtTimePeriod.text = String(format: "%.2f", result)
             
         default:
             return
         }
     }
 }
-
