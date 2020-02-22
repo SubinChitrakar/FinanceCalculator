@@ -19,8 +19,6 @@ class MortgageAndLoansViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func calculateValues(_ sender: UIButton) {
@@ -61,10 +59,21 @@ class MortgageAndLoansViewController: UIViewController {
         
         switch emptyField {
             
+        case .monthlyPaymentAmount:
+            result = MortgageAndLoans.getMonthlyPaymentAmount(principleAmount: principleAmount, interestRate: interestRate, timePeriod: timePeriod)
+            txtMonthlyPaymentAmount.text = String(format: "%.2f", result)
             
+        case .timePeriod:
+            result = MortgageAndLoans.getTimePeriod(principleAmount: principleAmount, monthlyPaymentAmount: monthlyPayment, interestRate: interestRate)
+            txtTimePeriod.text = String(format: "%.2f", result)
+            
+        case .principleAmount:
+            result = MortgageAndLoans.getPrincipleAmount(monthlyPaymentAmount: monthlyPayment, interestRate: interestRate, timePeriod: timePeriod)
+            txtPrincipleAmount.text = String(format: "%.2f", result)
             
         default:
             return
+            
         }
     }
 }

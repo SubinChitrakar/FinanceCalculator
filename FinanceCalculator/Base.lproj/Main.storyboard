@@ -118,7 +118,6 @@
                                 <rect key="frame" x="290" y="233" width="104" height="30"/>
                                 <state key="normal" title="Calculate"/>
                                 <connections>
-                                    <action selector="calculateValues:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="aUn-jd-Cd8"/>
                                     <action selector="calculateValues:" destination="lPb-xc-L5h" eventType="touchUpInside" id="ieq-Ss-6o2"/>
                                 </connections>
                             </button>

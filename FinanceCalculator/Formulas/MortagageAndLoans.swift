@@ -23,6 +23,7 @@ class MortgageAndLoans{
     static func getTimePeriod(principleAmount : Double, monthlyPaymentAmount : Double, interestRate : Double) -> Double {
         
         let topFormula = log((-12 * monthlyPaymentAmount) / ((principleAmount * interestRate / 100) - (12 * monthlyPaymentAmount)))
+        
         let bottomFormula = 12 * log((interestRate / 100 + 12) / 12)
         
         return topFormula/bottomFormula

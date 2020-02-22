@@ -60,7 +60,7 @@ class CompoundSavingsViewController: UIViewController {
         }
         
         switch emptyField {
-        
+            
         case .futureAmount:
             result = CompoundSavings.getCompoundSavingsAmount(principleAmount: principleAmount, interestRate: interestRate, timePeriod: timePeriod)
             txtCompoundAmount.text = String(format: "%.2f", result)
@@ -68,17 +68,18 @@ class CompoundSavingsViewController: UIViewController {
         case .principleAmount:
             result = CompoundSavings.getPrincipleAmount(compoundSaving: compoundSaving, interestRate: interestRate, timePeriod: timePeriod)
             txtPrincipleAmount.text = String(format: "%.2f", result)
-            
+        
         case .interestRate:
             result = CompoundSavings.getInterestRate(compoundSaving: compoundSaving, principleAmount: principleAmount, timePeriod: timePeriod)
             txtInterestRate.text = String(format: "%.2f", result * 100)
-            
+        
         case .timePeriod:
             result = CompoundSavings.getTimePeriod(compoundInterest: compoundSaving, principleAmount: principleAmount, interestRate: interestRate)
             txtTimePeriod.text = String(format: "%.2f", result)
-            
+        
         default:
             return
+            
         }
     }
 }
