@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Compound Savings-->
+        <scene sceneID="hNz-n2-bh7">
+            <objects>
+                <viewController title="Compound Savings" id="9pv-A4-QxB" customClass="CompoundSavingsViewController" customModule="FinanceCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Principle Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yPu-qh-geX">
+                                <rect key="frame" x="20" y="74" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Interest Rate" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AWk-zi-bxQ">
+                                <rect key="frame" x="20" y="119" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time Period (Years)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="acO-h9-gdh">
+                                <rect key="frame" x="20" y="165" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Compound Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FqE-ls-5LO">
+                                <rect key="frame" x="20" y="211" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ar5-QE-sJi">
+                                <rect key="frame" x="290" y="266" width="104" height="30"/>
+                                <state key="normal" title="Calculate"/>
+                                <connections>
+                                    <action selector="CalculateValues:" destination="9pv-A4-QxB" eventType="touchUpInside" id="QlG-wU-WDd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ar5-QE-sJi" firstAttribute="top" secondItem="FqE-ls-5LO" secondAttribute="bottom" constant="25" id="9AH-Iv-saB"/>
+                            <constraint firstItem="FqE-ls-5LO" firstAttribute="trailing" secondItem="ar5-QE-sJi" secondAttribute="trailing" id="9Wq-uy-ohu"/>
+                            <constraint firstItem="AWk-zi-bxQ" firstAttribute="trailing" secondItem="acO-h9-gdh" secondAttribute="trailing" id="ByW-8n-cS4"/>
+                            <constraint firstItem="ar5-QE-sJi" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="290" id="Fdq-b7-2VK"/>
+                            <constraint firstItem="acO-h9-gdh" firstAttribute="trailing" secondItem="FqE-ls-5LO" secondAttribute="trailing" id="FqQ-wv-fxa"/>
+                            <constraint firstItem="yPu-qh-geX" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailingMargin" id="MIv-Wy-8y6"/>
+                            <constraint firstItem="acO-h9-gdh" firstAttribute="leading" secondItem="FqE-ls-5LO" secondAttribute="leading" id="Moz-r0-zZM"/>
+                            <constraint firstItem="yPu-qh-geX" firstAttribute="trailing" secondItem="AWk-zi-bxQ" secondAttribute="trailing" id="RgZ-Kx-oeW"/>
+                            <constraint firstItem="AWk-zi-bxQ" firstAttribute="top" secondItem="yPu-qh-geX" secondAttribute="bottom" constant="15" id="XNc-Vr-hYi"/>
+                            <constraint firstItem="acO-h9-gdh" firstAttribute="top" secondItem="AWk-zi-bxQ" secondAttribute="bottom" constant="16" id="a4F-a4-UuA"/>
+                            <constraint firstItem="FqE-ls-5LO" firstAttribute="top" secondItem="acO-h9-gdh" secondAttribute="bottom" constant="16" id="axj-aO-nYB"/>
+                            <constraint firstItem="yPu-qh-geX" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="ceF-ZB-hjs"/>
+                            <constraint firstItem="yPu-qh-geX" firstAttribute="leading" secondItem="AWk-zi-bxQ" secondAttribute="leading" id="fbI-4S-4h3"/>
+                            <constraint firstItem="AWk-zi-bxQ" firstAttribute="leading" secondItem="acO-h9-gdh" secondAttribute="leading" id="vBx-e3-7qM"/>
+                            <constraint firstItem="yPu-qh-geX" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="30" id="vOJ-3p-Q59"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Compound Savings" image="first" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="TxtCompoundAmount" destination="FqE-ls-5LO" id="4xD-Bi-jkf"/>
+                        <outlet property="TxtInterestRate" destination="AWk-zi-bxQ" id="UhG-Ee-e49"/>
+                        <outlet property="TxtPrincipleAmount" destination="yPu-qh-geX" id="z8s-I9-CRi"/>
+                        <outlet property="TxtTimePeriod" destination="acO-h9-gdh" id="eTX-gp-pgQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
+        </scene>
+        <!--Mortgage And Loans-->
+        <scene sceneID="Fko-A3-sLM">
+            <objects>
+                <viewController title="Mortgage And Loans" id="lPb-xc-L5h" customClass="MortgageLoanViewController" customModule="FinanceCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AQK-BG-h9p">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="saK-AM-qUm"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Mortage and Loans" id="utR-9h-xaR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pva-R7-3jK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="761"/>
+        </scene>
+        <!--Savings-->
+        <scene sceneID="wg7-f3-ORb">
+            <objects>
+                <viewController title="Savings" id="8rJ-Kc-sve" customClass="SavingsViewController" customModule="FinanceCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
+                                <rect key="frame" x="106.5" y="426.5" width="201.5" height="43"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
+                                <rect key="frame" x="99.5" y="477.5" width="215" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
+                            <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
+                            <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
+                            <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Savings" image="second" id="cPa-gy-q4n"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="750" y="360"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="yl2-sM-qoP">
+            <objects>
+                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="lPb-xc-L5h" kind="relationship" relationship="viewControllers" id="3Vx-zJ-1QW"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="first" width="30" height="30"/>
+        <image name="second" width="30" height="30"/>
+    </resources>
+</document>
