@@ -28,7 +28,13 @@ class CompoundSavingsViewController: UIViewController, KeyboardViewDelegate {
     }
 
     @IBAction func textfieldPressed(_ sender: UITextField) {
+        if(currentTextField != nil)
+        {
+            currentTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        }
         currentTextField = sender
+        sender.resignFirstResponder()
+        sender.backgroundColor = #colorLiteral(red: 0.9157337546, green: 0.9102900624, blue: 0.9199181199, alpha: 1)
     }
 
     func keyboardPressed(buttonValue: Int) {
@@ -72,7 +78,6 @@ class CompoundSavingsViewController: UIViewController, KeyboardViewDelegate {
         }
         
         switch emptyField {
-            
         case .futureAmount:
             result = CompoundSavings.getCompoundSavingsAmount(principleAmount: principleAmount, interestRate: interestRate, timePeriod: timePeriod)
             txtCompoundAmount.text = String(format: "%.2f", result)
@@ -91,7 +96,6 @@ class CompoundSavingsViewController: UIViewController, KeyboardViewDelegate {
         
         default:
             return
-            
         }
     }
 }
