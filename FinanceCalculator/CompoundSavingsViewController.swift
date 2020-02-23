@@ -9,20 +9,32 @@
 import UIKit
 
 
-class CompoundSavingsViewController: UIViewController {
+class CompoundSavingsViewController: UIViewController, KeyboardViewDelegate {
 
     @IBOutlet weak var txtPrincipleAmount: UITextField!
     @IBOutlet weak var txtInterestRate: UITextField!
     @IBOutlet weak var txtTimePeriod: UITextField!
     @IBOutlet weak var txtCompoundAmount: UITextField!
     
+    @IBOutlet weak var viewCustomKeyboard: KeyboardViewController!
+    
     var emptyField = CalculationCases.empty
+    var currentTextField : UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        self.viewCustomKeyboard.keyboardDelegate = self
     }
-    
+
+    @IBAction func textfieldPressed(_ sender: UITextField) {
+        currentTextField = sender
+    }
+
+    func keyboardPressed(buttonValue: Int) {
+        
+    }
+
     @IBAction func calculateValues(_ sender: UIButton) {
         var emptyFieldCounter = 0
         let result : Double

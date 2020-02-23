@@ -23,24 +23,36 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textfieldPressed:" destination="9pv-A4-QxB" eventType="touchDown" id="GZd-PA-suY"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Interest Rate" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AWk-zi-bxQ">
                                 <rect key="frame" x="20" y="119" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textfieldPressed:" destination="9pv-A4-QxB" eventType="touchDown" id="YFE-CV-2up"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time Period (Years)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="acO-h9-gdh">
                                 <rect key="frame" x="20" y="165" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textfieldPressed:" destination="9pv-A4-QxB" eventType="touchDown" id="pQc-aZ-1uY"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Compound Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FqE-ls-5LO">
                                 <rect key="frame" x="20" y="211" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textfieldPressed:" destination="9pv-A4-QxB" eventType="touchDown" id="wiv-QK-K4Z"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ar5-QE-sJi">
                                 <rect key="frame" x="290" y="266" width="104" height="30"/>
@@ -81,6 +93,7 @@
                         <outlet property="txtInterestRate" destination="AWk-zi-bxQ" id="UhG-Ee-e49"/>
                         <outlet property="txtPrincipleAmount" destination="yPu-qh-geX" id="z8s-I9-CRi"/>
                         <outlet property="txtTimePeriod" destination="acO-h9-gdh" id="eTX-gp-pgQ"/>
+                        <outlet property="viewCustomKeyboard" destination="5u8-lf-8lE" id="ThH-8k-7Gk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>

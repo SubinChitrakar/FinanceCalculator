@@ -8,8 +8,14 @@
 
 import UIKit
 
+protocol KeyboardViewDelegate : class {
+    func keyboardPressed(buttonValue : Int)
+}
+
 class KeyboardViewController: UIView {
 
+    var keyboardDelegate : KeyboardViewDelegate?
+    
     @IBOutlet var keyboardView: UIView!
     
     required init?(coder aDecoder: NSCoder) {
@@ -20,5 +26,9 @@ class KeyboardViewController: UIView {
     }
 
     
+    @IBAction func buttonPressed(_ sender: UIButton) {
+        let buttonValue = sender.tag;
+        self.keyboardDelegate?.keyboardPressed(buttonValue: buttonValue)
+    }
     
 }
