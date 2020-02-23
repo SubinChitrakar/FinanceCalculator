@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF6C62D72402AD3E000A884F /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6C62D62402AD3E000A884F /* KeyboardViewController.swift */; };
+		DF6C62D92402AD6D000A884F /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF6C62D82402AD6D000A884F /* KeyboardView.xib */; };
 		DFBEA57B240161CE0054E70E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBEA57A240161CE0054E70E /* AppDelegate.swift */; };
 		DFBEA57D240161CE0054E70E /* CompoundSavingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBEA57C240161CE0054E70E /* CompoundSavingsViewController.swift */; };
 		DFBEA57F240161CE0054E70E /* SavingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBEA57E240161CE0054E70E /* SavingsViewController.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DF6C62D62402AD3E000A884F /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		DF6C62D82402AD6D000A884F /* KeyboardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
 		DFBEA577240161CE0054E70E /* FinanceCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFBEA57A240161CE0054E70E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFBEA57C240161CE0054E70E /* CompoundSavingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundSavingsViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF6C62D52402AD0D000A884F /* Custom Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				DF6C62D62402AD3E000A884F /* KeyboardViewController.swift */,
+				DF6C62D82402AD6D000A884F /* KeyboardView.xib */,
+			);
+			path = "Custom Keyboard";
+			sourceTree = "<group>";
+		};
 		DFBEA56E240161CE0054E70E = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +77,7 @@
 		DFBEA579240161CE0054E70E /* FinanceCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				DF6C62D52402AD0D000A884F /* Custom Keyboard */,
 				DFBEA588240161CF0054E70E /* Info.plist */,
 				DFBEA57A240161CE0054E70E /* AppDelegate.swift */,
 				DFBEA57C240161CE0054E70E /* CompoundSavingsViewController.swift */,
@@ -154,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFBEA587240161CF0054E70E /* LaunchScreen.storyboard in Resources */,
+				DF6C62D92402AD6D000A884F /* KeyboardView.xib in Resources */,
 				DFBEA584240161CF0054E70E /* Assets.xcassets in Resources */,
 				DFBEA582240161CE0054E70E /* Main.storyboard in Resources */,
 			);
@@ -167,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFD8C16A2401A05F001E8B8F /* MortagageAndLoans.swift in Sources */,
+				DF6C62D72402AD3E000A884F /* KeyboardViewController.swift in Sources */,
 				DFBEA594240176B50054E70E /* CompoundSavings.swift in Sources */,
 				DFBEA59724017FA30054E70E /* CalculationCases.swift in Sources */,
 				DFD8C168240193C9001E8B8F /* MortgageAndLoansViewController.swift in Sources */,
