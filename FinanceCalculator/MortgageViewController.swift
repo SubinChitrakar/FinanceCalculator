@@ -26,32 +26,29 @@ class MortgageViewController: UIViewController {
         var result : Double = 0
         
         let principleAmount: Double! = Double(txtPrincipleAmount.text!)
-        if(principleAmount == nil){
+        if principleAmount == nil {
             emptyField = CalculationCases.principleAmount
             emptyFieldCounter += 1
         }
         
         let interestRate: Double! = Double(txtInterestRate.text!)
-        if(interestRate == nil)
-        {
+        if interestRate == nil {
             return
         }
         
         let timePeriod: Double! = Double(txtTimePeriod.text!)
-        if(timePeriod == nil)
-        {
+        if timePeriod == nil {
             emptyField = CalculationCases.timePeriod
             emptyFieldCounter += 1
         }
         
         let monthlyPayment: Double! = Double(txtMonthlyPaymentAmount.text!)
-        if(monthlyPayment == nil)
-        {
+        if monthlyPayment == nil {
             emptyField = CalculationCases.monthlyPaymentAmount
             emptyFieldCounter += 1
         }
         
-        if((emptyFieldCounter == 0 && emptyField == CalculationCases.empty) || emptyFieldCounter > 1 ){
+        if (emptyFieldCounter == 0 && emptyField == CalculationCases.empty) || emptyFieldCounter > 1 {
             emptyField = CalculationCases.empty
             return
         }

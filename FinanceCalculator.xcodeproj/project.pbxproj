@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DF5F757F24042D20009C3BD7 /* SimpleSavingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F757E24042D20009C3BD7 /* SimpleSavingsViewController.swift */; };
 		DF5F758324043A07009C3BD7 /* LoansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F758224043A07009C3BD7 /* LoansViewController.swift */; };
+		DF5F758524044460009C3BD7 /* CompoundSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F758424044460009C3BD7 /* CompoundSaving.swift */; };
+		DF5F758724045608009C3BD7 /* SimpleSavingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F758624045608009C3BD7 /* SimpleSavingsViewController.swift */; };
+		DF5F758B240456D8009C3BD7 /* CompoundSavingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F758A240456D8009C3BD7 /* CompoundSavingsViewController.swift */; };
 		DFBEA57B240161CE0054E70E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBEA57A240161CE0054E70E /* AppDelegate.swift */; };
-		DFBEA57F240161CE0054E70E /* SavingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBEA57E240161CE0054E70E /* SavingsViewController.swift */; };
 		DFBEA582240161CE0054E70E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFBEA580240161CE0054E70E /* Main.storyboard */; };
 		DFBEA584240161CF0054E70E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFBEA583240161CF0054E70E /* Assets.xcassets */; };
 		DFBEA587240161CF0054E70E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFBEA585240161CF0054E70E /* LaunchScreen.storyboard */; };
@@ -34,11 +35,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		DF5F757E24042D20009C3BD7 /* SimpleSavingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleSavingsViewController.swift; sourceTree = "<group>"; };
 		DF5F758224043A07009C3BD7 /* LoansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoansViewController.swift; sourceTree = "<group>"; };
+		DF5F758424044460009C3BD7 /* CompoundSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundSaving.swift; sourceTree = "<group>"; };
+		DF5F758624045608009C3BD7 /* SimpleSavingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleSavingsViewController.swift; sourceTree = "<group>"; };
+		DF5F758A240456D8009C3BD7 /* CompoundSavingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompoundSavingsViewController.swift; sourceTree = "<group>"; };
 		DFBEA577240161CE0054E70E /* FinanceCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFBEA57A240161CE0054E70E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DFBEA57E240161CE0054E70E /* SavingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsViewController.swift; sourceTree = "<group>"; };
 		DFBEA581240161CE0054E70E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DFBEA583240161CF0054E70E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFBEA586240161CF0054E70E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -83,8 +85,8 @@
 				DFBEA57A240161CE0054E70E /* AppDelegate.swift */,
 				DF5F758224043A07009C3BD7 /* LoansViewController.swift */,
 				DFD8C167240193C9001E8B8F /* MortgageViewController.swift */,
-				DFBEA57E240161CE0054E70E /* SavingsViewController.swift */,
-				DF5F757E24042D20009C3BD7 /* SimpleSavingsViewController.swift */,
+				DF5F758A240456D8009C3BD7 /* CompoundSavingsViewController.swift */,
+				DF5F758624045608009C3BD7 /* SimpleSavingsViewController.swift */,
 				DFBEA583240161CF0054E70E /* Assets.xcassets */,
 				DFBEA5902401663C0054E70E /* Formulas */,
 				DFBEA585240161CF0054E70E /* LaunchScreen.storyboard */,
@@ -97,8 +99,9 @@
 		DFBEA5902401663C0054E70E /* Formulas */ = {
 			isa = PBXGroup;
 			children = (
-				DFBEA593240176B50054E70E /* SimpleSaving.swift */,
+				DF5F758424044460009C3BD7 /* CompoundSaving.swift */,
 				DFD8C1692401A05F001E8B8F /* MortagageAndLoans.swift */,
+				DFBEA593240176B50054E70E /* SimpleSaving.swift */,
 			);
 			path = Formulas;
 			sourceTree = "<group>";
@@ -183,13 +186,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF5F758B240456D8009C3BD7 /* CompoundSavingsViewController.swift in Sources */,
 				DF5F758324043A07009C3BD7 /* LoansViewController.swift in Sources */,
 				DFD8C16A2401A05F001E8B8F /* MortagageAndLoans.swift in Sources */,
 				DFBEA594240176B50054E70E /* SimpleSaving.swift in Sources */,
+				DF5F758524044460009C3BD7 /* CompoundSaving.swift in Sources */,
 				DFBEA59724017FA30054E70E /* CalculationCases.swift in Sources */,
+				DF5F758724045608009C3BD7 /* SimpleSavingsViewController.swift in Sources */,
 				DFD8C168240193C9001E8B8F /* MortgageViewController.swift in Sources */,
-				DF5F757F24042D20009C3BD7 /* SimpleSavingsViewController.swift in Sources */,
-				DFBEA57F240161CE0054E70E /* SavingsViewController.swift in Sources */,
 				DFBEA57B240161CE0054E70E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
