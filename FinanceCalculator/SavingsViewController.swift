@@ -18,7 +18,6 @@ class SavingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func calculateValues(_ sender: UIButton) {

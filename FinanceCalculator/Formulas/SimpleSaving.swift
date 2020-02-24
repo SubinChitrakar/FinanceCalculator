@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CompoundSavings{
+class SimpleSaving{
     
     static func getCompoundSavingsAmount(principleAmount:Double, interestRate: Double, timePeriod: Double) -> Double {
         

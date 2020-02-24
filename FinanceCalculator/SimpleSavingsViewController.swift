@@ -9,35 +9,17 @@
 import UIKit
 
 
-class CompoundSavingsViewController: UIViewController, KeyboardViewDelegate {
+class SimpleSavingsViewController: UIViewController{
 
     @IBOutlet weak var txtPrincipleAmount: UITextField!
     @IBOutlet weak var txtInterestRate: UITextField!
     @IBOutlet weak var txtTimePeriod: UITextField!
     @IBOutlet weak var txtCompoundAmount: UITextField!
     
-    @IBOutlet weak var viewCustomKeyboard: KeyboardViewController!
-    
     var emptyField = CalculationCases.empty
-    var currentTextField : UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.viewCustomKeyboard.keyboardDelegate = self
-    }
-
-    @IBAction func textfieldPressed(_ sender: UITextField) {
-        if(currentTextField != nil)
-        {
-            currentTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        }
-        currentTextField = sender
-        sender.resignFirstResponder()
-        sender.backgroundColor = #colorLiteral(red: 0.9157337546, green: 0.9102900624, blue: 0.9199181199, alpha: 1)
-    }
-
-    func keyboardPressed(buttonValue: Int) {
         
     }
 
@@ -79,19 +61,19 @@ class CompoundSavingsViewController: UIViewController, KeyboardViewDelegate {
         
         switch emptyField {
         case .futureAmount:
-            result = CompoundSavings.getCompoundSavingsAmount(principleAmount: principleAmount, interestRate: interestRate, timePeriod: timePeriod)
+            result = SimpleSaving.getCompoundSavingsAmount(principleAmount: principleAmount, interestRate: interestRate, timePeriod: timePeriod)
             txtCompoundAmount.text = String(format: "%.2f", result)
         
         case .principleAmount:
-            result = CompoundSavings.getPrincipleAmount(compoundSaving: compoundSaving, interestRate: interestRate, timePeriod: timePeriod)
+            result = SimpleSaving.getPrincipleAmount(compoundSaving: compoundSaving, interestRate: interestRate, timePeriod: timePeriod)
             txtPrincipleAmount.text = String(format: "%.2f", result)
         
         case .interestRate:
-            result = CompoundSavings.getInterestRate(compoundSaving: compoundSaving, principleAmount: principleAmount, timePeriod: timePeriod)
+            result = SimpleSaving.getInterestRate(compoundSaving: compoundSaving, principleAmount: principleAmount, timePeriod: timePeriod)
             txtInterestRate.text = String(format: "%.2f", result * 100)
         
         case .timePeriod:
-            result = CompoundSavings.getTimePeriod(compoundInterest: compoundSaving, principleAmount: principleAmount, interestRate: interestRate)
+            result = SimpleSaving.getTimePeriod(compoundInterest: compoundSaving, principleAmount: principleAmount, interestRate: interestRate)
             txtTimePeriod.text = String(format: "%.2f", result)
         
         default:

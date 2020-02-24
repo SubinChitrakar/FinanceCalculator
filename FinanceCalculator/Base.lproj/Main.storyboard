@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -9,118 +9,165 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Compound Savings-->
+        <!--Simple Savings-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController title="Compound Savings" id="9pv-A4-QxB" customClass="CompoundSavingsViewController" customModule="FinanceCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Simple Savings" id="9pv-A4-QxB" customClass="SimpleSavingsViewController" customModule="FinanceCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Principle Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yPu-qh-geX">
-                                <rect key="frame" x="20" y="74" width="339" height="30"/>
+                                <rect key="frame" x="20" y="74" width="378" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textfieldPressed:" destination="9pv-A4-QxB" eventType="editingDidBegin" id="aXv-2D-vRa"/>
-                                </connections>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Interest Rate" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AWk-zi-bxQ">
-                                <rect key="frame" x="20" y="119" width="339" height="30"/>
+                                <rect key="frame" x="20" y="119" width="378" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textfieldPressed:" destination="9pv-A4-QxB" eventType="editingDidBegin" id="My0-nL-jTF"/>
-                                </connections>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time Period (Years)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="acO-h9-gdh">
-                                <rect key="frame" x="20" y="165" width="339" height="30"/>
+                                <rect key="frame" x="20" y="165" width="378" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textfieldPressed:" destination="9pv-A4-QxB" eventType="editingDidBegin" id="fw2-l0-pqc"/>
-                                </connections>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Compound Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FqE-ls-5LO">
-                                <rect key="frame" x="20" y="211" width="339" height="30"/>
+                                <rect key="frame" x="20" y="211" width="374" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textfieldPressed:" destination="9pv-A4-QxB" eventType="editingDidBegin" id="taT-zR-H4X"/>
-                                </connections>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ar5-QE-sJi">
-                                <rect key="frame" x="282" y="249" width="77" height="30"/>
+                                <rect key="frame" x="309" y="269" width="85" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Calculate"/>
                                 <connections>
                                     <action selector="calculateValues:" destination="9pv-A4-QxB" eventType="touchUpInside" id="QlG-wU-WDd"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5u8-lf-8lE" customClass="KeyboardViewController" customModule="FinanceCalculator" customModuleProvider="target">
-                                <rect key="frame" x="16" y="361" width="343" height="247"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Compound Savings" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Simple Savings" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="txtCompoundAmount" destination="FqE-ls-5LO" id="4xD-Bi-jkf"/>
                         <outlet property="txtInterestRate" destination="AWk-zi-bxQ" id="UhG-Ee-e49"/>
                         <outlet property="txtPrincipleAmount" destination="yPu-qh-geX" id="z8s-I9-CRi"/>
                         <outlet property="txtTimePeriod" destination="acO-h9-gdh" id="eTX-gp-pgQ"/>
-                        <outlet property="viewCustomKeyboard" destination="5u8-lf-8lE" id="ThH-8k-7Gk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="746.39999999999998" y="-321.58920539730138"/>
+            <point key="canvasLocation" x="746.37681159420299" y="-322.09821428571428"/>
         </scene>
-        <!--Mortgage And Loans-->
-        <scene sceneID="Fko-A3-sLM">
+        <!--Loans-->
+        <scene sceneID="vW0-0v-jg6">
             <objects>
-                <viewController title="Mortgage And Loans" id="lPb-xc-L5h" customClass="MortgageAndLoansViewController" customModule="FinanceCalculator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="AQK-BG-h9p">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController title="Loans" id="Bgv-Wt-yNz" customClass="LoansViewController" customModule="FinanceCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uR7-ax-zxM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Principle Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="98U-7f-eq2">
-                                <rect key="frame" x="16" y="20" width="343" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Principle Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AmA-gP-PUm">
+                                <rect key="frame" x="36" y="72" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time Period (Years)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZNl-Km-04k">
-                                <rect key="frame" x="16" y="111" width="343" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time Period (Months)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rGa-Hp-OLp">
+                                <rect key="frame" x="36" y="163" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Interest Rate" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bZc-9x-G8b">
-                                <rect key="frame" x="16" y="65" width="343" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Interest Rate" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="17S-Ki-5XY">
+                                <rect key="frame" x="36" y="117" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Monthly Payment Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="For-XK-Fgw">
-                                <rect key="frame" x="16" y="157" width="343" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Monthly Payment Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Snl-pD-tDt">
+                                <rect key="frame" x="36" y="209" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9A5-RJ-ucr">
-                                <rect key="frame" x="290" y="209" width="69" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KGI-K2-iiW">
+                                <rect key="frame" x="310" y="261" width="69" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Calculate"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="Bgv-Wt-yNz" eventType="touchUpInside" id="6Dp-pI-nYF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="In2-KY-EbM"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Loans" id="xMd-RE-C9n"/>
+                    <connections>
+                        <outlet property="txtInterestRate" destination="17S-Ki-5XY" id="BW1-pG-aka"/>
+                        <outlet property="txtMonthlyPaymentAmount" destination="Snl-pD-tDt" id="D25-JN-p0t"/>
+                        <outlet property="txtPrincipleAmount" destination="AmA-gP-PUm" id="xtV-qg-OeE"/>
+                        <outlet property="txtTimePeriod" destination="rGa-Hp-OLp" id="wsF-mr-JPT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Wz-WZ-7Lm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-675" y="761"/>
+        </scene>
+        <!--Mortgage-->
+        <scene sceneID="Fko-A3-sLM">
+            <objects>
+                <viewController title="Mortgage" id="lPb-xc-L5h" customClass="MortgageViewController" customModule="FinanceCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AQK-BG-h9p">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Principle Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="98U-7f-eq2">
+                                <rect key="frame" x="36" y="66" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time Period (Years)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZNl-Km-04k">
+                                <rect key="frame" x="36" y="157" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Interest Rate" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bZc-9x-G8b">
+                                <rect key="frame" x="36" y="111" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Monthly Payment Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="For-XK-Fgw">
+                                <rect key="frame" x="36" y="203" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9A5-RJ-ucr">
+                                <rect key="frame" x="310" y="255" width="69" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Calculate"/>
                                 <connections>
                                     <action selector="calculateValues:" destination="lPb-xc-L5h" eventType="touchUpInside" id="ieq-Ss-6o2"/>
@@ -128,26 +175,9 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="ZNl-Km-04k" firstAttribute="trailing" secondItem="For-XK-Fgw" secondAttribute="trailing" id="4qZ-Vz-uXk"/>
-                            <constraint firstItem="bZc-9x-G8b" firstAttribute="trailing" secondItem="ZNl-Km-04k" secondAttribute="trailing" id="Ayu-jv-1Ak"/>
-                            <constraint firstItem="98U-7f-eq2" firstAttribute="trailing" secondItem="bZc-9x-G8b" secondAttribute="trailing" id="BMj-jE-bIs"/>
-                            <constraint firstItem="For-XK-Fgw" firstAttribute="trailing" secondItem="9A5-RJ-ucr" secondAttribute="trailing" id="CIC-Lv-m8c"/>
-                            <constraint firstItem="ZNl-Km-04k" firstAttribute="top" secondItem="bZc-9x-G8b" secondAttribute="bottom" constant="16" id="QPC-Rl-VIg"/>
-                            <constraint firstItem="9A5-RJ-ucr" firstAttribute="top" secondItem="For-XK-Fgw" secondAttribute="bottom" constant="22" id="UEe-ap-9bM"/>
-                            <constraint firstItem="98U-7f-eq2" firstAttribute="trailing" secondItem="AQK-BG-h9p" secondAttribute="trailingMargin" id="WYL-AS-0BE"/>
-                            <constraint firstItem="bZc-9x-G8b" firstAttribute="top" secondItem="98U-7f-eq2" secondAttribute="bottom" constant="15" id="cmd-1Z-Vzo"/>
-                            <constraint firstItem="For-XK-Fgw" firstAttribute="top" secondItem="ZNl-Km-04k" secondAttribute="bottom" constant="16" id="ezx-Yc-K6u"/>
-                            <constraint firstItem="98U-7f-eq2" firstAttribute="top" secondItem="saK-AM-qUm" secondAttribute="top" id="j2I-48-fg8"/>
-                            <constraint firstItem="bZc-9x-G8b" firstAttribute="leading" secondItem="ZNl-Km-04k" secondAttribute="leading" id="ksl-At-RPB"/>
-                            <constraint firstItem="9A5-RJ-ucr" firstAttribute="leading" secondItem="saK-AM-qUm" secondAttribute="leading" constant="290" id="mrn-yK-mRd"/>
-                            <constraint firstItem="ZNl-Km-04k" firstAttribute="leading" secondItem="For-XK-Fgw" secondAttribute="leading" id="obN-Wx-dPO"/>
-                            <constraint firstItem="98U-7f-eq2" firstAttribute="leading" secondItem="AQK-BG-h9p" secondAttribute="leadingMargin" id="sjL-7Z-2Da"/>
-                            <constraint firstItem="98U-7f-eq2" firstAttribute="leading" secondItem="bZc-9x-G8b" secondAttribute="leading" id="v2i-OV-B8t"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="saK-AM-qUm"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Mortage and Loans" id="utR-9h-xaR"/>
+                    <tabBarItem key="tabBarItem" title="Mortage" id="utR-9h-xaR"/>
                     <connections>
                         <outlet property="txtInterestRate" destination="bZc-9x-G8b" id="Eun-is-TaO"/>
                         <outlet property="txtMonthlyPaymentAmount" destination="For-XK-Fgw" id="rcJ-hJ-mdQ"/>
@@ -159,76 +189,73 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="761"/>
         </scene>
-        <!--Savings-->
+        <!--Compound Savings-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController title="Savings" id="8rJ-Kc-sve" customClass="SavingsViewController" customModule="FinanceCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Compound Savings" id="8rJ-Kc-sve" customClass="SavingsViewController" customModule="FinanceCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Principle Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WW4-j2-EeL">
-                                <rect key="frame" x="16" y="20" width="343" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Principle Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WW4-j2-EeL">
+                                <rect key="frame" x="36" y="84" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time Period (Years)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XPf-r9-VNK">
-                                <rect key="frame" x="16" y="111" width="343" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time Period (Years)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XPf-r9-VNK">
+                                <rect key="frame" x="36" y="175" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Interest Rate" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="igQ-Sd-aRa">
-                                <rect key="frame" x="16" y="65" width="343" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Interest Rate" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="igQ-Sd-aRa">
+                                <rect key="frame" x="36" y="129" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Monthly Payment Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1qN-xq-fyA">
-                                <rect key="frame" x="16" y="157" width="343" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Monthly Payment Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1qN-xq-fyA">
+                                <rect key="frame" x="36" y="221" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Future Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IPY-OA-4D3">
-                                <rect key="frame" x="16" y="203" width="343" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Future Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IPY-OA-4D3">
+                                <rect key="frame" x="36" y="267" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2b-3r-H8v">
-                                <rect key="frame" x="290" y="249" width="69" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2b-3r-H8v">
+                                <rect key="frame" x="310" y="373" width="69" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Calculate"/>
                                 <connections>
                                     <action selector="calculateValues:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="qi9-cE-unU"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YWm-Xf-JJ4">
+                                <rect key="frame" x="332" y="319" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Payment at Beginning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBc-of-8n9">
+                                <rect key="frame" x="183" y="326" width="141" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="WW4-j2-EeL" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="03B-tY-zbB"/>
-                            <constraint firstItem="igQ-Sd-aRa" firstAttribute="top" secondItem="WW4-j2-EeL" secondAttribute="bottom" constant="15" id="2mc-Oq-2w2"/>
-                            <constraint firstItem="XPf-r9-VNK" firstAttribute="top" secondItem="igQ-Sd-aRa" secondAttribute="bottom" constant="16" id="3Z4-gc-lxi"/>
-                            <constraint firstItem="igQ-Sd-aRa" firstAttribute="leading" secondItem="XPf-r9-VNK" secondAttribute="leading" id="4Vk-Lh-6Lu"/>
-                            <constraint firstItem="WW4-j2-EeL" firstAttribute="trailing" secondItem="igQ-Sd-aRa" secondAttribute="trailing" id="5oL-Gh-YrM"/>
-                            <constraint firstItem="1qN-xq-fyA" firstAttribute="trailing" secondItem="IPY-OA-4D3" secondAttribute="trailing" id="Gcm-DP-bax"/>
-                            <constraint firstItem="1qN-xq-fyA" firstAttribute="top" secondItem="XPf-r9-VNK" secondAttribute="bottom" constant="16" id="I6M-hv-tbc"/>
-                            <constraint firstItem="WW4-j2-EeL" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="IJC-aP-kQb"/>
-                            <constraint firstItem="WW4-j2-EeL" firstAttribute="leading" secondItem="igQ-Sd-aRa" secondAttribute="leading" id="YMk-H5-e0h"/>
-                            <constraint firstItem="XPf-r9-VNK" firstAttribute="leading" secondItem="1qN-xq-fyA" secondAttribute="leading" id="ZwK-UH-TEy"/>
-                            <constraint firstItem="igQ-Sd-aRa" firstAttribute="trailing" secondItem="XPf-r9-VNK" secondAttribute="trailing" id="gBa-yO-DMi"/>
-                            <constraint firstItem="S2b-3r-H8v" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="290" id="hMb-bd-OQU"/>
-                            <constraint firstItem="S2b-3r-H8v" firstAttribute="top" secondItem="IPY-OA-4D3" secondAttribute="bottom" constant="16" id="iAG-zA-ILN"/>
-                            <constraint firstItem="WW4-j2-EeL" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="lyJ-LO-ShU"/>
-                            <constraint firstItem="IPY-OA-4D3" firstAttribute="trailing" secondItem="S2b-3r-H8v" secondAttribute="trailing" id="reh-H5-YVo"/>
-                            <constraint firstItem="IPY-OA-4D3" firstAttribute="top" secondItem="1qN-xq-fyA" secondAttribute="bottom" constant="16" id="stM-6j-5RZ"/>
-                            <constraint firstItem="XPf-r9-VNK" firstAttribute="trailing" secondItem="1qN-xq-fyA" secondAttribute="trailing" id="wb3-CO-vTy"/>
-                            <constraint firstItem="1qN-xq-fyA" firstAttribute="leading" secondItem="IPY-OA-4D3" secondAttribute="leading" id="yKP-V5-8Ub"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Savings" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Compound Savings" image="second" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="txtFutureAmount" destination="IPY-OA-4D3" id="pOg-yN-Nlr"/>
                         <outlet property="txtInterestRate" destination="igQ-Sd-aRa" id="KKU-V9-WxL"/>
@@ -254,6 +281,7 @@
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="lPb-xc-L5h" kind="relationship" relationship="viewControllers" id="3Vx-zJ-1QW"/>
+                        <segue destination="Bgv-Wt-yNz" kind="relationship" relationship="viewControllers" id="uPc-WT-g1h"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>

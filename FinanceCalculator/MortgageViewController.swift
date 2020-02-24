@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MortgageAndLoansViewController: UIViewController {
+class MortgageViewController: UIViewController {
 
     @IBOutlet weak var txtPrincipleAmount: UITextField!
     @IBOutlet weak var txtInterestRate: UITextField!

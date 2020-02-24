@@ -7,34 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DF6C62D72402AD3E000A884F /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6C62D62402AD3E000A884F /* KeyboardViewController.swift */; };
-		DF6C62D92402AD6D000A884F /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF6C62D82402AD6D000A884F /* KeyboardView.xib */; };
+		DF5F757F24042D20009C3BD7 /* SimpleSavingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F757E24042D20009C3BD7 /* SimpleSavingsViewController.swift */; };
+		DF5F758324043A07009C3BD7 /* LoansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F758224043A07009C3BD7 /* LoansViewController.swift */; };
 		DFBEA57B240161CE0054E70E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBEA57A240161CE0054E70E /* AppDelegate.swift */; };
-		DFBEA57D240161CE0054E70E /* CompoundSavingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBEA57C240161CE0054E70E /* CompoundSavingsViewController.swift */; };
 		DFBEA57F240161CE0054E70E /* SavingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBEA57E240161CE0054E70E /* SavingsViewController.swift */; };
 		DFBEA582240161CE0054E70E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFBEA580240161CE0054E70E /* Main.storyboard */; };
 		DFBEA584240161CF0054E70E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFBEA583240161CF0054E70E /* Assets.xcassets */; };
 		DFBEA587240161CF0054E70E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFBEA585240161CF0054E70E /* LaunchScreen.storyboard */; };
-		DFBEA594240176B50054E70E /* CompoundSavings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBEA593240176B50054E70E /* CompoundSavings.swift */; };
+		DFBEA594240176B50054E70E /* SimpleSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBEA593240176B50054E70E /* SimpleSaving.swift */; };
 		DFBEA59724017FA30054E70E /* CalculationCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBEA59624017FA30054E70E /* CalculationCases.swift */; };
-		DFD8C168240193C9001E8B8F /* MortgageAndLoansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD8C167240193C9001E8B8F /* MortgageAndLoansViewController.swift */; };
+		DFD8C168240193C9001E8B8F /* MortgageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD8C167240193C9001E8B8F /* MortgageViewController.swift */; };
 		DFD8C16A2401A05F001E8B8F /* MortagageAndLoans.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD8C1692401A05F001E8B8F /* MortagageAndLoans.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		DF5F756A24040FBB009C3BD7 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		DF6C62D62402AD3E000A884F /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
-		DF6C62D82402AD6D000A884F /* KeyboardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
+		DF5F757E24042D20009C3BD7 /* SimpleSavingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleSavingsViewController.swift; sourceTree = "<group>"; };
+		DF5F758224043A07009C3BD7 /* LoansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoansViewController.swift; sourceTree = "<group>"; };
 		DFBEA577240161CE0054E70E /* FinanceCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFBEA57A240161CE0054E70E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DFBEA57C240161CE0054E70E /* CompoundSavingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundSavingsViewController.swift; sourceTree = "<group>"; };
 		DFBEA57E240161CE0054E70E /* SavingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsViewController.swift; sourceTree = "<group>"; };
 		DFBEA581240161CE0054E70E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DFBEA583240161CF0054E70E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFBEA586240161CF0054E70E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DFBEA588240161CF0054E70E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DFBEA593240176B50054E70E /* CompoundSavings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompoundSavings.swift; sourceTree = "<group>"; };
+		DFBEA593240176B50054E70E /* SimpleSaving.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleSaving.swift; sourceTree = "<group>"; };
 		DFBEA59624017FA30054E70E /* CalculationCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationCases.swift; sourceTree = "<group>"; };
-		DFD8C167240193C9001E8B8F /* MortgageAndLoansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MortgageAndLoansViewController.swift; sourceTree = "<group>"; };
+		DFD8C167240193C9001E8B8F /* MortgageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MortgageViewController.swift; sourceTree = "<group>"; };
 		DFD8C1692401A05F001E8B8F /* MortagageAndLoans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MortagageAndLoans.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -49,15 +60,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DF6C62D52402AD0D000A884F /* Custom Keyboard */ = {
-			isa = PBXGroup;
-			children = (
-				DF6C62D62402AD3E000A884F /* KeyboardViewController.swift */,
-				DF6C62D82402AD6D000A884F /* KeyboardView.xib */,
-			);
-			path = "Custom Keyboard";
-			sourceTree = "<group>";
-		};
 		DFBEA56E240161CE0054E70E = {
 			isa = PBXGroup;
 			children = (
@@ -77,12 +79,12 @@
 		DFBEA579240161CE0054E70E /* FinanceCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				DF6C62D52402AD0D000A884F /* Custom Keyboard */,
 				DFBEA588240161CF0054E70E /* Info.plist */,
 				DFBEA57A240161CE0054E70E /* AppDelegate.swift */,
-				DFBEA57C240161CE0054E70E /* CompoundSavingsViewController.swift */,
-				DFD8C167240193C9001E8B8F /* MortgageAndLoansViewController.swift */,
+				DF5F758224043A07009C3BD7 /* LoansViewController.swift */,
+				DFD8C167240193C9001E8B8F /* MortgageViewController.swift */,
 				DFBEA57E240161CE0054E70E /* SavingsViewController.swift */,
+				DF5F757E24042D20009C3BD7 /* SimpleSavingsViewController.swift */,
 				DFBEA583240161CF0054E70E /* Assets.xcassets */,
 				DFBEA5902401663C0054E70E /* Formulas */,
 				DFBEA585240161CF0054E70E /* LaunchScreen.storyboard */,
@@ -95,7 +97,7 @@
 		DFBEA5902401663C0054E70E /* Formulas */ = {
 			isa = PBXGroup;
 			children = (
-				DFBEA593240176B50054E70E /* CompoundSavings.swift */,
+				DFBEA593240176B50054E70E /* SimpleSaving.swift */,
 				DFD8C1692401A05F001E8B8F /* MortagageAndLoans.swift */,
 			);
 			path = Formulas;
@@ -119,6 +121,7 @@
 				DFBEA573240161CE0054E70E /* Sources */,
 				DFBEA574240161CE0054E70E /* Frameworks */,
 				DFBEA575240161CE0054E70E /* Resources */,
+				DF5F756A24040FBB009C3BD7 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -168,7 +171,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFBEA587240161CF0054E70E /* LaunchScreen.storyboard in Resources */,
-				DF6C62D92402AD6D000A884F /* KeyboardView.xib in Resources */,
 				DFBEA584240161CF0054E70E /* Assets.xcassets in Resources */,
 				DFBEA582240161CE0054E70E /* Main.storyboard in Resources */,
 			);
@@ -181,14 +183,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF5F758324043A07009C3BD7 /* LoansViewController.swift in Sources */,
 				DFD8C16A2401A05F001E8B8F /* MortagageAndLoans.swift in Sources */,
-				DF6C62D72402AD3E000A884F /* KeyboardViewController.swift in Sources */,
-				DFBEA594240176B50054E70E /* CompoundSavings.swift in Sources */,
+				DFBEA594240176B50054E70E /* SimpleSaving.swift in Sources */,
 				DFBEA59724017FA30054E70E /* CalculationCases.swift in Sources */,
-				DFD8C168240193C9001E8B8F /* MortgageAndLoansViewController.swift in Sources */,
+				DFD8C168240193C9001E8B8F /* MortgageViewController.swift in Sources */,
+				DF5F757F24042D20009C3BD7 /* SimpleSavingsViewController.swift in Sources */,
 				DFBEA57F240161CE0054E70E /* SavingsViewController.swift in Sources */,
 				DFBEA57B240161CE0054E70E /* AppDelegate.swift in Sources */,
-				DFBEA57D240161CE0054E70E /* CompoundSavingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
