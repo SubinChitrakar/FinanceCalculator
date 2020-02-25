@@ -17,10 +17,26 @@ class LoansViewController: UIViewController {
     
     var emptyField = CalculationCases.empty
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let notification = NotificationCenter.default
+        notification.addObserver(self, selector: #selector(self.saveData), name: UIApplication.willResignActiveNotification, object: nil)
+        txtPrincipleAmount.text = defaults.string(forKey: "PrincipleAmountLoans")
+        txtInterestRate.text = defaults.string(forKey: "InterestRateLoans")
+        txtTimePeriod.text = defaults.string(forKey: "TimePeriodLoans")
+        txtMonthlyPaymentAmount.text = defaults.string(forKey: "MonthlyPaymentAmountLoans")
     }
 
+    @objc func saveData(){
+        defaults.set(self.txtPrincipleAmount.text, forKey: "PrincipleAmountLoans")
+        defaults.set(self.txtInterestRate.text, forKey: "InterestRateLoans")
+        defaults.set(self.txtTimePeriod.text, forKey: "TimePeriodLoans")
+        defaults.set(self.txtMonthlyPaymentAmount.text, forKey: "MonthlyPaymentAmountLoans")
+    }
+    
     @IBAction func buttonPressed(_ sender: UIButton) {
         var emptyFieldCounter = 0
         var result : Double = 0

@@ -59,9 +59,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Simple Savings" image="Simple Savings" selectedImage="Simple Savings" id="acW-dT-cKf"/>
                     <connections>
-                        <outlet property="txtCompoundAmount" destination="FqE-ls-5LO" id="4xD-Bi-jkf"/>
                         <outlet property="txtInterestRate" destination="AWk-zi-bxQ" id="UhG-Ee-e49"/>
                         <outlet property="txtPrincipleAmount" destination="yPu-qh-geX" id="z8s-I9-CRi"/>
+                        <outlet property="txtSimpleSavingsAmount" destination="FqE-ls-5LO" id="4xD-Bi-jkf"/>
                         <outlet property="txtTimePeriod" destination="acO-h9-gdh" id="eTX-gp-pgQ"/>
                     </connections>
                 </viewController>
@@ -158,7 +158,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Monthly Payment Amount" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="For-XK-Fgw">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Yearly Payment Amount" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="For-XK-Fgw">
                                 <rect key="frame" x="36" y="203" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -180,9 +180,9 @@
                     <tabBarItem key="tabBarItem" title="Mortage" image="Mortgage" selectedImage="Mortgage" id="utR-9h-xaR"/>
                     <connections>
                         <outlet property="txtInterestRate" destination="bZc-9x-G8b" id="Eun-is-TaO"/>
-                        <outlet property="txtMonthlyPaymentAmount" destination="For-XK-Fgw" id="rcJ-hJ-mdQ"/>
                         <outlet property="txtPrincipleAmount" destination="98U-7f-eq2" id="xKf-WK-A0j"/>
                         <outlet property="txtTimePeriod" destination="ZNl-Km-04k" id="2e7-lM-DdE"/>
+                        <outlet property="txtYearlyAmount" destination="For-XK-Fgw" id="rcJ-hJ-mdQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pva-R7-3jK" userLabel="First Responder" sceneMemberID="firstResponder"/>

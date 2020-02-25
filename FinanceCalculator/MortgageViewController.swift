@@ -13,12 +13,28 @@ class MortgageViewController: UIViewController {
     @IBOutlet weak var txtPrincipleAmount: UITextField!
     @IBOutlet weak var txtInterestRate: UITextField!
     @IBOutlet weak var txtTimePeriod: UITextField!
-    @IBOutlet weak var txtMonthlyPaymentAmount: UITextField!
+    @IBOutlet weak var txtYearlyAmount: UITextField!
     
     var emptyField = CalculationCases.empty
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let notification = NotificationCenter.default
+        notification.addObserver(self, selector: #selector(self.saveData), name: UIApplication.willResignActiveNotification, object: nil)
+        txtPrincipleAmount.text = defaults.string(forKey: "PrincipleAmountMortgage")
+        txtInterestRate.text = defaults.string(forKey: "InterestRateMortgage")
+        txtTimePeriod.text = defaults.string(forKey: "TimePeriodMortgage")
+        txtYearlyAmount.text = defaults.string(forKey: "YearlyAmountMortgage")
+    }
+    
+    @objc func saveData(){
+        defaults.set(self.txtPrincipleAmount.text, forKey: "PrincipleAmountMortgage")
+        defaults.set(self.txtInterestRate.text, forKey: "InterestRateMortgage")
+        defaults.set(self.txtTimePeriod.text, forKey: "TimePeriodMortgage")
+        defaults.set(self.txtYearlyAmount.text, forKey: "YearlyAmountMortgage")
     }
     
     @IBAction func calculateValues(_ sender: UIButton) {
@@ -42,7 +58,7 @@ class MortgageViewController: UIViewController {
             emptyFieldCounter += 1
         }
         
-        let monthlyPayment: Double! = Double(txtMonthlyPaymentAmount.text!)
+        let monthlyPayment: Double! = Double(txtYearlyAmount.text!)
         if monthlyPayment == nil {
             emptyField = CalculationCases.monthlyPaymentAmount
             emptyFieldCounter += 1
@@ -58,7 +74,7 @@ class MortgageViewController: UIViewController {
             
         case .monthlyPaymentAmount:
             result = MortgageAndLoans.getMonthlyPaymentAmount(principleAmount: principleAmount, interestRate: interestRate, timePeriod: timePeriod)
-            txtMonthlyPaymentAmount.text = String(format: "%.2f", result)
+            txtYearlyAmount.text = String(format: "%.2f", result)
             
         case .timePeriod:
             result = MortgageAndLoans.getTimePeriod(principleAmount: principleAmount, monthlyPaymentAmount: monthlyPayment, interestRate: interestRate)

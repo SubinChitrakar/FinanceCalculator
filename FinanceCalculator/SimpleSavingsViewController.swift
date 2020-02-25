@@ -14,12 +14,14 @@ class SimpleSavingsViewController: UIViewController{
     @IBOutlet weak var txtPrincipleAmount: UITextField!
     @IBOutlet weak var txtInterestRate: UITextField!
     @IBOutlet weak var txtTimePeriod: UITextField!
-    @IBOutlet weak var txtCompoundAmount: UITextField!
+    @IBOutlet weak var txtSimpleSavingsAmount: UITextField!
     
     var emptyField = CalculationCases.empty
     
     var keyboardHeight : CGFloat = 0;
     var initialCoordinate : CGFloat = 0;
+    
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,20 @@ class SimpleSavingsViewController: UIViewController{
         let sel = #selector(self.closeKeyboard)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: sel)
         view.addGestureRecognizer(tap)
+        
+        let notification = NotificationCenter.default
+        notification.addObserver(self, selector: #selector(self.saveData), name: UIApplication.willResignActiveNotification, object: nil)
+        txtPrincipleAmount.text = defaults.string(forKey: "PrincipleAmountSimpleSavings")
+        txtInterestRate.text = defaults.string(forKey: "InterestRateSimpleSavings")
+        txtTimePeriod.text = defaults.string(forKey: "TimePeriodSimpleSavings")
+        txtSimpleSavingsAmount.text = defaults.string(forKey: "SimpleSavingAmount")
+    }
+    
+    @objc func saveData(){
+        defaults.set(self.txtPrincipleAmount.text, forKey: "PrincipleAmountSimpleSavings")
+        defaults.set(self.txtInterestRate.text, forKey: "InterestRateSimpleSavings")
+        defaults.set(self.txtTimePeriod.text, forKey: "TimePeriodSimpleSavings")
+        defaults.set(self.txtSimpleSavingsAmount.text, forKey: "SimpleSavingAmount")
     }
     
     @objc func closeKeyboard() {
@@ -84,7 +100,7 @@ class SimpleSavingsViewController: UIViewController{
             emptyFieldCounter += 1
         }
         
-        let compoundSaving: Double! = Double(txtCompoundAmount.text!)
+        let compoundSaving: Double! = Double(txtSimpleSavingsAmount.text!)
         if compoundSaving == nil {
             emptyField = CalculationCases.futureAmount
             emptyFieldCounter += 1
@@ -98,7 +114,7 @@ class SimpleSavingsViewController: UIViewController{
         switch emptyField {
         case .futureAmount:
             result = SimpleSaving.getCompoundSavingsAmount(principleAmount: principleAmount, interestRate: interestRate, timePeriod: timePeriod)
-            txtCompoundAmount.text = String(format: "%.2f", result)
+            txtSimpleSavingsAmount.text = String(format: "%.2f", result)
         
         case .principleAmount:
             result = SimpleSaving.getPrincipleAmount(compoundSaving: compoundSaving, interestRate: interestRate, timePeriod: timePeriod)

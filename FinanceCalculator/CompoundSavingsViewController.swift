@@ -23,6 +23,8 @@ class CompoundSavingsViewController: UIViewController {
     var keyboardHeight : CGFloat = 0;
     var initialCoordinate : CGFloat = 0;
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +36,24 @@ class CompoundSavingsViewController: UIViewController {
         let sel = #selector(self.closeKeyboard)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: sel)
         view.addGestureRecognizer(tap)
+        
+        let notification = NotificationCenter.default
+        notification.addObserver(self, selector: #selector(self.saveData), name: UIApplication.willResignActiveNotification, object: nil)
+        txtPrincipleAmount.text = defaults.string(forKey: "PrincipleAmountCompoundSavings")
+        txtInterestRate.text = defaults.string(forKey: "InterestRateCompoundSavings")
+        txtTimePeriod.text = defaults.string(forKey: "TimePeriodCompoundSavings")
+        txtMonthlyPaymentAmount.text = defaults.string(forKey: "MonthlyPaymentAmountCompoundSavings")
+        txtFutureAmount.text = defaults.string(forKey: "FutureAmountCompoundSavings")
+        switchPaymentAtBeginning.isOn = defaults.bool(forKey: "SwitchForBeginningCompoundSavings")
+    }
+    
+    @objc func saveData(){
+        defaults.set(self.txtPrincipleAmount.text, forKey: "PrincipleAmountCompoundSavings")
+        defaults.set(self.txtInterestRate.text, forKey: "InterestRateCompoundSavings")
+        defaults.set(self.txtTimePeriod.text, forKey: "TimePeriodCompoundSavings")
+        defaults.set(self.txtMonthlyPaymentAmount.text, forKey: "MonthlyPaymentAmountCompoundSavings")
+        defaults.set(self.txtFutureAmount.text, forKey: "FutureAmountCompoundSavings")
+        defaults.set(self.switchPaymentAtBeginning.isOn, forKey: "SwitchForBeginningCompoundSavings")
     }
     
     @objc func closeKeyboard() {
