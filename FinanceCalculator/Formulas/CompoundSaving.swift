@@ -33,13 +33,14 @@ class CompoundSaving{
     
     static func getTimePeriodForDepositAtEnd(principleAmount : Double, interestRate : Double, monthlyPaymentAmount : Double, futureAmount : Double) -> Double{
         
-        let topFormulaPart1 = (futureAmount * interestRate / 100) + (12 * monthlyPaymentAmount)
-        let topFormuulaPart2 = 12 * monthlyPaymentAmount
-        let topFormula = log(topFormulaPart1/topFormuulaPart2)
+        let leftFormulaTop = (futureAmount * (interestRate / 100 / 12)) + monthlyPaymentAmount
+        let leftFormulaBottom = (principleAmount * (interestRate / 100 / 12 )) + monthlyPaymentAmount
         
-        let bottomFormula = 12 * log( (interestRate / 100 + 12) / 12 )
+        let leftFormula = log(leftFormulaTop/leftFormulaBottom)
         
-        return topFormula / bottomFormula
+        let rightForumla = 1 / (12 * log(1 + interestRate / 100 / 12))
+        
+        return leftFormula * rightForumla
     }
     
     static func getFutureValueForDepositAtBeginning(principleAmount : Double, interestRate : Double, timePeriod : Double, monthlyPaymentAmount : Double) -> Double {
@@ -66,4 +67,15 @@ class CompoundSaving{
         return (futureAmount - compoundInterestForPrinciple) / ((topFormula / bottomFormula) * series)
     }
     
+    static func getTimePeriodForDepositAtBeginning(principleAmount : Double, interestRate : Double, monthlyPaymentAmount : Double, futureAmount : Double) -> Double{
+        
+        let topFormulaPartA = futureAmount + (monthlyPaymentAmount / (interestRate / 100 / 12)) + monthlyPaymentAmount
+        let topFormulaPartB = principleAmount + (monthlyPaymentAmount / (interestRate / 100 / 12)) + monthlyPaymentAmount
+        
+        let topFormula = log(topFormulaPartA / topFormulaPartB)
+        
+        let bottomFormula = 12 * (log(1 + (interestRate / 100 / 12)))
+        
+        return topFormula / bottomFormula
+    }
 }

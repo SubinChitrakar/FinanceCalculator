@@ -86,13 +86,14 @@ class CompoundSavingsViewController: UIViewController {
             
         case .timePeriod:
             if switchPaymentAtBeginning.isOn {
-                
+                result = CompoundSaving.getTimePeriodForDepositAtBeginning(principleAmount: principleAmount, interestRate: interestRate, monthlyPaymentAmount: monthlyPayment, futureAmount: futureAmount)
             }
             else{
                 result = CompoundSaving.getTimePeriodForDepositAtEnd(principleAmount: principleAmount, interestRate: interestRate, monthlyPaymentAmount: monthlyPayment, futureAmount: futureAmount)
             }
             
             txtTimePeriod.text = String(format: "%.2f", result)
+            
         default:
             return
         }
