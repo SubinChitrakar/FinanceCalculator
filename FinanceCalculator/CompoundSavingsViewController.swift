@@ -20,9 +20,50 @@ class CompoundSavingsViewController: UIViewController {
     
     var emptyField = CalculationCases.empty
     
+    var keyboardHeight : CGFloat = 0;
+    var initialCoordinate : CGFloat = 0;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tabBarFrame : CGRect = (self.tabBarController?.tabBar.frame)!
+        initialCoordinate = tabBarFrame.origin.y
+        
+        KeyboardOpenStatus.open = false
+        
+        let sel = #selector(self.closeKeyboard)
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: sel)
+        view.addGestureRecognizer(tap)
     }
+    
+    @objc func closeKeyboard() {
+        view.endEditing(true)
+        if KeyboardOpenStatus.open{
+            var tabBarFrame: CGRect = (self.tabBarController?.tabBar.frame)!
+            tabBarFrame.origin.y = initialCoordinate
+            self.tabBarController?.tabBar.frame = tabBarFrame
+            KeyboardOpenStatus.open = false
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue{
+            if(self.keyboardHeight == 0)
+            {
+                self.keyboardHeight = keyboardSize.origin.y - keyboardSize.height - (self.tabBarController?.tabBar.frame.height)!
+            }
+            KeyboardOpenStatus.open = true;
+        }
+        var tabBarFrame: CGRect = (self.tabBarController?.tabBar.frame)!
+        initialCoordinate = tabBarFrame.origin.y
+        tabBarFrame.origin.y = self.keyboardHeight
+        self.tabBarController?.tabBar.frame = tabBarFrame
+    }
+    
     
     @IBAction func calculateValues(_ sender: UIButton) {
         var emptyFieldCounter = 0

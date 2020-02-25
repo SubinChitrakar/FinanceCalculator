@@ -17,6 +17,7 @@
 		DFBEA587240161CF0054E70E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFBEA585240161CF0054E70E /* LaunchScreen.storyboard */; };
 		DFBEA594240176B50054E70E /* SimpleSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBEA593240176B50054E70E /* SimpleSaving.swift */; };
 		DFBEA59724017FA30054E70E /* CalculationCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBEA59624017FA30054E70E /* CalculationCases.swift */; };
+		DFC8D49A24057E74007ABF74 /* KeyboardOpenStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC8D49924057E74007ABF74 /* KeyboardOpenStatus.swift */; };
 		DFD8C168240193C9001E8B8F /* MortgageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD8C167240193C9001E8B8F /* MortgageViewController.swift */; };
 		DFD8C16A2401A05F001E8B8F /* MortagageAndLoans.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD8C1692401A05F001E8B8F /* MortagageAndLoans.swift */; };
 /* End PBXBuildFile section */
@@ -47,6 +48,7 @@
 		DFBEA588240161CF0054E70E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFBEA593240176B50054E70E /* SimpleSaving.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleSaving.swift; sourceTree = "<group>"; };
 		DFBEA59624017FA30054E70E /* CalculationCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationCases.swift; sourceTree = "<group>"; };
+		DFC8D49924057E74007ABF74 /* KeyboardOpenStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardOpenStatus.swift; sourceTree = "<group>"; };
 		DFD8C167240193C9001E8B8F /* MortgageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MortgageViewController.swift; sourceTree = "<group>"; };
 		DFD8C1692401A05F001E8B8F /* MortagageAndLoans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MortagageAndLoans.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				DFBEA59624017FA30054E70E /* CalculationCases.swift */,
+				DFC8D49924057E74007ABF74 /* KeyboardOpenStatus.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 			files = (
 				DF5F758B240456D8009C3BD7 /* CompoundSavingsViewController.swift in Sources */,
 				DF5F758324043A07009C3BD7 /* LoansViewController.swift in Sources */,
+				DFC8D49A24057E74007ABF74 /* KeyboardOpenStatus.swift in Sources */,
 				DFD8C16A2401A05F001E8B8F /* MortagageAndLoans.swift in Sources */,
 				DFBEA594240176B50054E70E /* SimpleSaving.swift in Sources */,
 				DF5F758524044460009C3BD7 /* CompoundSaving.swift in Sources */,
