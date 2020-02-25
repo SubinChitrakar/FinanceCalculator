@@ -18,35 +18,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Principle Amount" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="yPu-qh-geX">
-                                <rect key="frame" x="20" y="532" width="378" height="30"/>
+                                <rect key="frame" x="18" y="92" width="378" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Interest Rate" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="AWk-zi-bxQ">
-                                <rect key="frame" x="20" y="577" width="378" height="30"/>
+                                <rect key="frame" x="18" y="137" width="378" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time Period (Years)" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="acO-h9-gdh">
-                                <rect key="frame" x="20" y="623" width="378" height="30"/>
+                                <rect key="frame" x="18" y="183" width="378" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Compound Amount" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="FqE-ls-5LO">
-                                <rect key="frame" x="20" y="669" width="374" height="30"/>
+                                <rect key="frame" x="18" y="229" width="374" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ar5-QE-sJi">
-                                <rect key="frame" x="309" y="727" width="85" height="46"/>
+                                <rect key="frame" x="307" y="287" width="85" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Calculate"/>
                                 <connections>
@@ -57,7 +57,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Simple Savings" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Simple Savings" image="Simple Savings" selectedImage="Simple Savings" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="txtCompoundAmount" destination="FqE-ls-5LO" id="4xD-Bi-jkf"/>
                         <outlet property="txtInterestRate" destination="AWk-zi-bxQ" id="UhG-Ee-e49"/>
@@ -117,7 +117,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="In2-KY-EbM"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Loans" id="xMd-RE-C9n"/>
+                    <tabBarItem key="tabBarItem" title="Loans" image="Loan" selectedImage="Loan" id="xMd-RE-C9n"/>
                     <connections>
                         <outlet property="txtInterestRate" destination="17S-Ki-5XY" id="BW1-pG-aka"/>
                         <outlet property="txtMonthlyPaymentAmount" destination="Snl-pD-tDt" id="D25-JN-p0t"/>
@@ -177,7 +177,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="saK-AM-qUm"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Mortage" selectedImage="first" id="utR-9h-xaR"/>
+                    <tabBarItem key="tabBarItem" title="Mortage" image="Mortgage" selectedImage="Mortgage" id="utR-9h-xaR"/>
                     <connections>
                         <outlet property="txtInterestRate" destination="bZc-9x-G8b" id="Eun-is-TaO"/>
                         <outlet property="txtMonthlyPaymentAmount" destination="For-XK-Fgw" id="rcJ-hJ-mdQ"/>
@@ -255,7 +255,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Compound Savings" image="Image" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Compound Savings" image="Compound Savings" selectedImage="Compound Savings" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="switchPaymentAtBeginning" destination="YWm-Xf-JJ4" id="b58-IZ-8xC"/>
                         <outlet property="txtFutureAmount" destination="IPY-OA-4D3" id="pOg-yN-Nlr"/>
@@ -291,7 +291,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Image" width="30" height="30"/>
-        <image name="first" width="30" height="30"/>
+        <image name="Compound Savings" width="30" height="30"/>
+        <image name="Loan" width="30" height="30"/>
+        <image name="Mortgage" width="30" height="30"/>
+        <image name="Simple Savings" width="30" height="30"/>
     </resources>
 </document>
