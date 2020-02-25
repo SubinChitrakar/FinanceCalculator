@@ -85,9 +85,9 @@
 			children = (
 				DFBEA588240161CF0054E70E /* Info.plist */,
 				DFBEA57A240161CE0054E70E /* AppDelegate.swift */,
+				DF5F758A240456D8009C3BD7 /* CompoundSavingsViewController.swift */,
 				DF5F758224043A07009C3BD7 /* LoansViewController.swift */,
 				DFD8C167240193C9001E8B8F /* MortgageViewController.swift */,
-				DF5F758A240456D8009C3BD7 /* CompoundSavingsViewController.swift */,
 				DF5F758624045608009C3BD7 /* SimpleSavingsViewController.swift */,
 				DFBEA583240161CF0054E70E /* Assets.xcassets */,
 				DFBEA5902401663C0054E70E /* Formulas */,
