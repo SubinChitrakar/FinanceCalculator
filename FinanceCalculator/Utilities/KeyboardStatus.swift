@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
-class KeyboardOpenStatus
+class KeyboardStatus
 {
-    static var open = false
-
+    static var open  = false
+    static var defaultLocation: CGFloat = -1
+    static var keyBoardHeight: CGFloat = -1
 }

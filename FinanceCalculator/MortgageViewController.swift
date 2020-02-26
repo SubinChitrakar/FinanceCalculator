@@ -17,17 +17,28 @@ class MortgageViewController: UIViewController {
     
     var emptyField = CalculationCases.empty
     
+    var firstTimeOpen = true
+    
     let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let notification = NotificationCenter.default
-        notification.addObserver(self, selector: #selector(self.saveData), name: UIApplication.willResignActiveNotification, object: nil)
-        txtPrincipleAmount.text = defaults.string(forKey: "PrincipleAmountMortgage")
-        txtInterestRate.text = defaults.string(forKey: "InterestRateMortgage")
-        txtTimePeriod.text = defaults.string(forKey: "TimePeriodMortgage")
-        txtYearlyAmount.text = defaults.string(forKey: "YearlyAmountMortgage")
+        if (firstTimeOpen){
+            super.viewDidLoad()
+            firstTimeOpen = false
+            let sel = #selector(self.closeKeyboard)
+            let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: sel)
+            view.addGestureRecognizer(tap)
+            
+            let notification = NotificationCenter.default
+            notification.addObserver(self, selector: #selector(self.saveData), name: UIApplication.willResignActiveNotification, object: nil)
+            txtPrincipleAmount.text = defaults.string(forKey: "PrincipleAmountMortgage")
+            txtInterestRate.text = defaults.string(forKey: "InterestRateMortgage")
+            txtTimePeriod.text = defaults.string(forKey: "TimePeriodMortgage")
+            txtYearlyAmount.text = defaults.string(forKey: "YearlyAmountMortgage")
+        }
+        closeKeyboard()
     }
     
     @objc func saveData(){
@@ -35,6 +46,38 @@ class MortgageViewController: UIViewController {
         defaults.set(self.txtInterestRate.text, forKey: "InterestRateMortgage")
         defaults.set(self.txtTimePeriod.text, forKey: "TimePeriodMortgage")
         defaults.set(self.txtYearlyAmount.text, forKey: "YearlyAmountMortgage")
+    }
+    
+    @objc func closeKeyboard() {
+        view.endEditing(true)
+        if (KeyboardStatus.open){
+            var tabBarFrame: CGRect = (self.tabBarController?.tabBar.frame)!
+            tabBarFrame.origin.y = KeyboardStatus.defaultLocation
+            self.tabBarController?.tabBar.frame = tabBarFrame
+            KeyboardStatus.open = false
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if (!KeyboardStatus.open){
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+                if (KeyboardStatus.keyBoardHeight == -1) {
+                    KeyboardStatus.keyBoardHeight = keyboardSize.origin.y - keyboardSize.height -
+                        (self.tabBarController?.tabBar.frame.height)!
+                }
+            }
+            var tabBarFrame: CGRect = (self.tabBarController?.tabBar.frame)!
+            if (KeyboardStatus.defaultLocation == -1) {
+                KeyboardStatus.defaultLocation = tabBarFrame.origin.y
+            }
+            tabBarFrame.origin.y = KeyboardStatus.keyBoardHeight
+            self.tabBarController?.tabBar.frame = tabBarFrame
+            KeyboardStatus.open = true
+        }
     }
     
     @IBAction func calculateValues(_ sender: UIButton) {

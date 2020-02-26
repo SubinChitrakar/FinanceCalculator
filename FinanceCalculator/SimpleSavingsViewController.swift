@@ -10,7 +10,7 @@ import UIKit
 
 
 class SimpleSavingsViewController: UIViewController{
-
+    
     @IBOutlet weak var txtPrincipleAmount: UITextField!
     @IBOutlet weak var txtInterestRate: UITextField!
     @IBOutlet weak var txtTimePeriod: UITextField!
@@ -18,66 +18,76 @@ class SimpleSavingsViewController: UIViewController{
     
     var emptyField = CalculationCases.empty
     
-    var keyboardHeight : CGFloat = 0;
-    var initialCoordinate : CGFloat = 0;
+    var firstTimeOpen = true
     
     let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tabBarFrame : CGRect = (self.tabBarController?.tabBar.frame)!
-        initialCoordinate = tabBarFrame.origin.y
-        
-        KeyboardOpenStatus.open = false
-        
-        let sel = #selector(self.closeKeyboard)
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: sel)
-        view.addGestureRecognizer(tap)
-        
-        let notification = NotificationCenter.default
-        notification.addObserver(self, selector: #selector(self.saveData), name: UIApplication.willResignActiveNotification, object: nil)
-        txtPrincipleAmount.text = defaults.string(forKey: "PrincipleAmountSimpleSavings")
-        txtInterestRate.text = defaults.string(forKey: "InterestRateSimpleSavings")
-        txtTimePeriod.text = defaults.string(forKey: "TimePeriodSimpleSavings")
-        txtSimpleSavingsAmount.text = defaults.string(forKey: "SimpleSavingAmount")
-    }
-    
-    @objc func saveData(){
-        defaults.set(self.txtPrincipleAmount.text, forKey: "PrincipleAmountSimpleSavings")
-        defaults.set(self.txtInterestRate.text, forKey: "InterestRateSimpleSavings")
-        defaults.set(self.txtTimePeriod.text, forKey: "TimePeriodSimpleSavings")
-        defaults.set(self.txtSimpleSavingsAmount.text, forKey: "SimpleSavingAmount")
-    }
-    
-    @objc func closeKeyboard() {
-        view.endEditing(true)
-        if KeyboardOpenStatus.open{
-            var tabBarFrame: CGRect = (self.tabBarController?.tabBar.frame)!
-            tabBarFrame.origin.y = initialCoordinate
-            self.tabBarController?.tabBar.frame = tabBarFrame
-            KeyboardOpenStatus.open = false
+        if (firstTimeOpen){
+            super.viewDidLoad()
+            firstTimeOpen = false
+            let sel = #selector(self.closeKeyboard)
+            let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: sel)
+            view.addGestureRecognizer(tap)
+            
+            let notification = NotificationCenter.default
+            notification.addObserver(self, selector: #selector(self.saveData), name: UIApplication.willResignActiveNotification, object: nil)
+            txtPrincipleAmount.text = defaults.string(forKey: "PrincipleAmountSimpleSavings")
+            txtInterestRate.text = defaults.string(forKey: "InterestRateSimpleSavings")
+            txtTimePeriod.text = defaults.string(forKey: "TimePeriodSimpleSavings")
+            txtSimpleSavingsAmount.text = defaults.string(forKey: "SimpleSavingAmount")
         }
+        closeKeyboard()
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue{
-            if(self.keyboardHeight == 0)
-            {
-                self.keyboardHeight = keyboardSize.origin.y - keyboardSize.height - (self.tabBarController?.tabBar.frame.height)!
+        if (!KeyboardStatus.open){
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+                if (KeyboardStatus.keyBoardHeight == -1) {
+                    KeyboardStatus.keyBoardHeight = keyboardSize.origin.y - keyboardSize.height -
+                        (self.tabBarController?.tabBar.frame.height)!
+                }
             }
-            KeyboardOpenStatus.open = true;
+            var tabBarFrame: CGRect = (self.tabBarController?.tabBar.frame)!
+            if (KeyboardStatus.defaultLocation == -1) {
+                KeyboardStatus.defaultLocation = tabBarFrame.origin.y
+            }
+            tabBarFrame.origin.y = KeyboardStatus.keyBoardHeight
+            self.tabBarController?.tabBar.frame = tabBarFrame
+            KeyboardStatus.open = true
+            
         }
-        var tabBarFrame: CGRect = (self.tabBarController?.tabBar.frame)!
-        initialCoordinate = tabBarFrame.origin.y
-        tabBarFrame.origin.y = self.keyboardHeight
-        self.tabBarController?.tabBar.frame = tabBarFrame
     }
-
+    
+    @objc func closeKeyboard() {
+        view.endEditing(true)
+        if (KeyboardStatus.open){
+            var tabBarFrame: CGRect = (self.tabBarController?.tabBar.frame)!
+            tabBarFrame.origin.y = KeyboardStatus.defaultLocation
+            self.tabBarController?.tabBar.frame = tabBarFrame
+            KeyboardStatus.open = false
+        }
+    }
+    
+    @objc func didTapGesture(gesture: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    
+    @objc func saveData() {
+        defaults.set(self.txtPrincipleAmount.text, forKey: "PrincipleAmountSimpleSavings")
+        defaults.set(self.txtInterestRate.text, forKey: "InterestRateSimpleSavings")
+        defaults.set(self.txtTimePeriod.text, forKey: "TimePeriodSimpleSavings")
+        defaults.set(self.txtSimpleSavingsAmount.text, forKey: "SimpleSavingAmount")
+    }
+    
     @IBAction func calculateValues(_ sender: UIButton) {
         var emptyFieldCounter = 0
         let result : Double
