@@ -16,6 +16,8 @@ class SimpleSavingsViewController: UIViewController{
     @IBOutlet weak var txtTimePeriod: UITextField!
     @IBOutlet weak var txtSimpleSavingsAmount: UITextField!
     
+    @IBOutlet weak var btnCalculate: UIButton!
+    
     var emptyField = CalculationCases.empty
     
     var firstTimeOpen = true
