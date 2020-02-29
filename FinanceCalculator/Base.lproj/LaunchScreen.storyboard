@@ -17,12 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="G6o-IL-dwc">
-                                <rect key="frame" x="20" y="247" width="374" height="393"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="G6o-IL-dwc">
+                                <rect key="frame" x="147" y="388" width="120" height="120"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.1019607843" blue="0.24313725489999999" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="G6o-IL-dwc" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="5Sd-Mo-Oq5"/>
+                            <constraint firstItem="G6o-IL-dwc" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="PbK-8j-4FE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -32,6 +35,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo" width="227.5" height="153.5"/>
+        <image name="Logo" width="164.5" height="153.5"/>
     </resources>
 </document>
