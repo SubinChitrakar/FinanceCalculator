@@ -9,7 +9,7 @@
 import UIKit
 
 
-class SimpleSavingsViewController: UIViewController{
+class SimpleSavingsViewController: UIViewController, UIViewControllerTransitioningDelegate{
     
     @IBOutlet weak var txtPrincipleAmount: UITextField!
     @IBOutlet weak var txtInterestRate: UITextField!
@@ -23,6 +23,9 @@ class SimpleSavingsViewController: UIViewController{
     var firstTimeOpen = true
     
     let defaults = UserDefaults.standard
+    
+    @IBOutlet weak var btnHelp: UIButton!
+    let transition = CircularTransition()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,7 +93,29 @@ class SimpleSavingsViewController: UIViewController{
         defaults.set(self.txtSimpleSavingsAmount.text, forKey: "SimpleSavingAmount")
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let helpViewController = segue.destination as! HelpViewController
+        helpViewController.transitioningDelegate = self
+        helpViewController.modalPresentationStyle = .custom
+    }
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .present
+        transition.startingPoint = btnHelp.center
+        transition.circleColor = UIColor.init(red: 57/255, green: 31/255, blue: 67/255, alpha: 1.00)
+        return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .dismiss
+        transition.startingPoint = btnHelp.center
+        transition.circleColor = UIColor.init(red: 57/255, green: 31/255, blue: 67/255, alpha: 1.00)
+        return transition
+    }
+    
+    
     @IBAction func calculateValues(_ sender: UIButton) {
+        
         var emptyFieldCounter = 0
         let result : Double
         
@@ -119,7 +144,6 @@ class SimpleSavingsViewController: UIViewController{
         }
         
         if (emptyFieldCounter == 0 && emptyField == CalculationCases.empty) || emptyFieldCounter > 1  {
-            
             emptyField = CalculationCases.empty
             
             let errorAlert = UIAlertController(title: "Error", message: "More than ONE TEXTFIELDS EMPTY", preferredStyle: UIAlertController.Style.alert)
@@ -131,20 +155,20 @@ class SimpleSavingsViewController: UIViewController{
         switch emptyField {
         case .futureAmount:
             result = SimpleSaving.getCompoundSavingsAmount(principleAmount: principleAmount, interestRate: interestRate, timePeriod: timePeriod)
+            TextFieldAnimation.scapeUpAnimation(textField: txtSimpleSavingsAmount)
             txtSimpleSavingsAmount.text = String(format: "%.2f", result)
-        
         case .principleAmount:
             result = SimpleSaving.getPrincipleAmount(compoundSaving: compoundSaving, interestRate: interestRate, timePeriod: timePeriod)
+            TextFieldAnimation.scapeUpAnimation(textField: txtPrincipleAmount)
             txtPrincipleAmount.text = String(format: "%.2f", result)
-        
         case .interestRate:
             result = SimpleSaving.getInterestRate(compoundSaving: compoundSaving, principleAmount: principleAmount, timePeriod: timePeriod)
+            TextFieldAnimation.scapeUpAnimation(textField: txtInterestRate)
             txtInterestRate.text = String(format: "%.2f", result * 100)
-        
         case .timePeriod:
             result = SimpleSaving.getTimePeriod(compoundInterest: compoundSaving, principleAmount: principleAmount, interestRate: interestRate)
+            TextFieldAnimation.scapeUpAnimation(textField: txtTimePeriod)
             txtTimePeriod.text = String(format: "%.2f", result)
-        
         default:
             return
         }
