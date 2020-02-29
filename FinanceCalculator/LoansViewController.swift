@@ -92,7 +92,12 @@ class LoansViewController: UIViewController {
         
         let interestRate: Double! = Double(txtInterestRate.text!)
         if interestRate == nil {
-            return
+            emptyField = CalculationCases.empty
+            
+            let errorAlert = UIAlertController(title: "Error", message: "INTEREST RATE can't be EMPTY", preferredStyle: UIAlertController.Style.alert)
+            let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            errorAlert.addAction(okButton);
+            self.present(errorAlert, animated: true, completion: nil)
         }
         
         let timePeriod: Double! = Double(txtTimePeriod.text!)
@@ -101,7 +106,6 @@ class LoansViewController: UIViewController {
             emptyFieldCounter += 1
         }
         
-        
         let monthlyPayment: Double! = Double(txtMonthlyPaymentAmount.text!)
         if monthlyPayment == nil {
             emptyField = CalculationCases.monthlyPaymentAmount
@@ -109,8 +113,13 @@ class LoansViewController: UIViewController {
         }
         
         if (emptyFieldCounter == 0 && emptyField == CalculationCases.empty) || emptyFieldCounter > 1 {
+            
             emptyField = CalculationCases.empty
-            return
+            
+            let errorAlert = UIAlertController(title: "Error", message: "More than ONE TEXTFIELDS EMPTY", preferredStyle: UIAlertController.Style.alert)
+            let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            errorAlert.addAction(okButton);
+            self.present(errorAlert, animated: true, completion: nil)
         }
         
         

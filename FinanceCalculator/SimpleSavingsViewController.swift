@@ -119,8 +119,13 @@ class SimpleSavingsViewController: UIViewController{
         }
         
         if (emptyFieldCounter == 0 && emptyField == CalculationCases.empty) || emptyFieldCounter > 1  {
+            
             emptyField = CalculationCases.empty
-            return
+            
+            let errorAlert = UIAlertController(title: "Error", message: "More than ONE TEXTFIELDS EMPTY", preferredStyle: UIAlertController.Style.alert)
+            let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            errorAlert.addAction(okButton);
+            self.present(errorAlert, animated: true, completion: nil)
         }
         
         switch emptyField {

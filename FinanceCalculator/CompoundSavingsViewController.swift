@@ -116,14 +116,21 @@ class CompoundSavingsViewController: UIViewController {
             emptyFieldCounter += 1
         }
         
-        if (emptyFieldCounter == 0 && emptyField == CalculationCases.empty) || emptyFieldCounter > 1 {
-            emptyField = CalculationCases.empty
-            return
-        }
-        
         let interestRate: Double! = Double(txtInterestRate.text!)
         if interestRate == nil{
-            return
+            
+            emptyField = CalculationCases.empty
+            
+        }
+        
+        if (emptyFieldCounter == 0 && emptyField == CalculationCases.empty) || emptyFieldCounter > 1 {
+            
+            emptyField = CalculationCases.empty
+            
+            let errorAlert = UIAlertController(title: "Error", message: "More than ONE TEXTFIELDS EMPTY", preferredStyle: UIAlertController.Style.alert)
+            let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            errorAlert.addAction(okButton);
+            self.present(errorAlert, animated: true, completion: nil)
         }
         
         switch emptyField {
