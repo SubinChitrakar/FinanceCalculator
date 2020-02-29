@@ -22,8 +22,6 @@ class TextFieldAnimation
     static func scaleToNormalAnimation(textField:UITextField){
         UIView.animate(withDuration: 0.35, delay: 0.1, options: .curveEaseIn, animations: {
             textField.transform = CGAffineTransform(scaleX: 1, y: 1)
-        }){(success) in
-        }
+        }, completion: nil)
     }
-    
 }

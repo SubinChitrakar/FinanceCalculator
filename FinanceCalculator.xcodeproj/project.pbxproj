@@ -102,6 +102,15 @@
 			path = HelpControllers;
 			sourceTree = "<group>";
 		};
+		DF30C222240AE9E00008C481 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				DF30C213240AA03A0008C481 /* TextFieldAnimation.swift */,
+				DF30C217240AB5E00008C481 /* CircularTransition.swift */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		DFBEA56E240161CE0054E70E = {
 			isa = PBXGroup;
 			children = (
@@ -121,14 +130,15 @@
 		DFBEA579240161CE0054E70E /* FinanceCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				DF30C222240AE9E00008C481 /* Animations */,
 				DFBEA588240161CF0054E70E /* Info.plist */,
 				DFBEA57A240161CE0054E70E /* AppDelegate.swift */,
 				DFBEA583240161CF0054E70E /* Assets.xcassets */,
 				DF30C212240A94510008C481 /* Controllers */,
 				DFBEA5902401663C0054E70E /* Formulas */,
+				DFBEA59524017F770054E70E /* Utilities */,
 				DFBEA585240161CF0054E70E /* LaunchScreen.storyboard */,
 				DFBEA580240161CE0054E70E /* Main.storyboard */,
-				DFBEA59524017F770054E70E /* Utilities */,
 			);
 			path = FinanceCalculator;
 			sourceTree = "<group>";
@@ -146,10 +156,8 @@
 		DFBEA59524017F770054E70E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				DF30C217240AB5E00008C481 /* CircularTransition.swift */,
 				DFBEA59624017FA30054E70E /* CalculationCases.swift */,
 				DFC8D49924057E74007ABF74 /* KeyboardStatus.swift */,
-				DF30C213240AA03A0008C481 /* TextFieldAnimation.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
