@@ -17,14 +17,12 @@ class SimpleSavingsViewController: UIViewController, UIViewControllerTransitioni
     @IBOutlet weak var txtSimpleSavingsAmount: UITextField!
     
     @IBOutlet weak var btnCalculate: UIButton!
+    @IBOutlet weak var btnHelp: UIButton!
     
     var emptyField = CalculationCases.empty
-    
     var firstTimeOpen = true
     
     let defaults = UserDefaults.standard
-    
-    @IBOutlet weak var btnHelp: UIButton!
     let transition = CircularTransition()
     
     override func viewDidLoad() {
@@ -94,7 +92,7 @@ class SimpleSavingsViewController: UIViewController, UIViewControllerTransitioni
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let helpViewController = segue.destination as! HelpViewController
+        let helpViewController = segue.destination as! HelpSimpleSavingsViewController
         helpViewController.transitioningDelegate = self
         helpViewController.modalPresentationStyle = .custom
     }
@@ -112,7 +110,6 @@ class SimpleSavingsViewController: UIViewController, UIViewControllerTransitioni
         transition.circleColor = UIColor.init(red: 57/255, green: 31/255, blue: 67/255, alpha: 1.00)
         return transition
     }
-    
     
     @IBAction func calculateValues(_ sender: UIButton) {
         
@@ -157,18 +154,22 @@ class SimpleSavingsViewController: UIViewController, UIViewControllerTransitioni
             result = SimpleSaving.getCompoundSavingsAmount(principleAmount: principleAmount, interestRate: interestRate, timePeriod: timePeriod)
             TextFieldAnimation.scapeUpAnimation(textField: txtSimpleSavingsAmount)
             txtSimpleSavingsAmount.text = String(format: "%.2f", result)
+            
         case .principleAmount:
             result = SimpleSaving.getPrincipleAmount(compoundSaving: compoundSaving, interestRate: interestRate, timePeriod: timePeriod)
             TextFieldAnimation.scapeUpAnimation(textField: txtPrincipleAmount)
             txtPrincipleAmount.text = String(format: "%.2f", result)
+            
         case .interestRate:
             result = SimpleSaving.getInterestRate(compoundSaving: compoundSaving, principleAmount: principleAmount, timePeriod: timePeriod)
             TextFieldAnimation.scapeUpAnimation(textField: txtInterestRate)
             txtInterestRate.text = String(format: "%.2f", result * 100)
+            
         case .timePeriod:
             result = SimpleSaving.getTimePeriod(compoundInterest: compoundSaving, principleAmount: principleAmount, interestRate: interestRate)
             TextFieldAnimation.scapeUpAnimation(textField: txtTimePeriod)
             txtTimePeriod.text = String(format: "%.2f", result)
+            
         default:
             return
         }

@@ -8,18 +8,20 @@
 
 import UIKit
 
-class MortgageViewController: UIViewController {
+class MortgageViewController: UIViewController, UIViewControllerTransitioningDelegate{
 
     @IBOutlet weak var txtPrincipleAmount: UITextField!
     @IBOutlet weak var txtInterestRate: UITextField!
     @IBOutlet weak var txtTimePeriod: UITextField!
-    @IBOutlet weak var txtYearlyAmount: UITextField!
+    @IBOutlet weak var txtYearlyPaymentAmount: UITextField!
+    
+    @IBOutlet weak var btnHelp: UIButton!
     
     var emptyField = CalculationCases.empty
-    
     var firstTimeOpen = true
     
     let defaults = UserDefaults.standard
+    let transition = CircularTransition()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,26 +38,9 @@ class MortgageViewController: UIViewController {
             txtPrincipleAmount.text = defaults.string(forKey: "PrincipleAmountMortgage")
             txtInterestRate.text = defaults.string(forKey: "InterestRateMortgage")
             txtTimePeriod.text = defaults.string(forKey: "TimePeriodMortgage")
-            txtYearlyAmount.text = defaults.string(forKey: "YearlyAmountMortgage")
+            txtYearlyPaymentAmount.text = defaults.string(forKey: "YearlyAmountMortgage")
         }
         closeKeyboard()
-    }
-    
-    @objc func saveData(){
-        defaults.set(self.txtPrincipleAmount.text, forKey: "PrincipleAmountMortgage")
-        defaults.set(self.txtInterestRate.text, forKey: "InterestRateMortgage")
-        defaults.set(self.txtTimePeriod.text, forKey: "TimePeriodMortgage")
-        defaults.set(self.txtYearlyAmount.text, forKey: "YearlyAmountMortgage")
-    }
-    
-    @objc func closeKeyboard() {
-        view.endEditing(true)
-        if (KeyboardStatus.open){
-            var tabBarFrame: CGRect = (self.tabBarController?.tabBar.frame)!
-            tabBarFrame.origin.y = KeyboardStatus.defaultLocation
-            self.tabBarController?.tabBar.frame = tabBarFrame
-            KeyboardStatus.open = false
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +65,43 @@ class MortgageViewController: UIViewController {
         }
     }
     
+    @objc func closeKeyboard() {
+        view.endEditing(true)
+        if (KeyboardStatus.open){
+            var tabBarFrame: CGRect = (self.tabBarController?.tabBar.frame)!
+            tabBarFrame.origin.y = KeyboardStatus.defaultLocation
+            self.tabBarController?.tabBar.frame = tabBarFrame
+            KeyboardStatus.open = false
+        }
+    }
+    
+    @objc func saveData(){
+        defaults.set(self.txtPrincipleAmount.text, forKey: "PrincipleAmountMortgage")
+        defaults.set(self.txtInterestRate.text, forKey: "InterestRateMortgage")
+        defaults.set(self.txtTimePeriod.text, forKey: "TimePeriodMortgage")
+        defaults.set(self.txtYearlyPaymentAmount.text, forKey: "YearlyAmountMortgage")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let helpViewController = segue.destination as! HelpMortgageViewController
+        helpViewController.transitioningDelegate = self
+        helpViewController.modalPresentationStyle = .custom
+    }
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .present
+        transition.startingPoint = btnHelp.center
+        transition.circleColor = UIColor.init(red: 57/255, green: 31/255, blue: 67/255, alpha: 1.00)
+        return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .dismiss
+        transition.startingPoint = btnHelp.center
+        transition.circleColor = UIColor.init(red: 57/255, green: 31/255, blue: 67/255, alpha: 1.00)
+        return transition
+    }
+    
     @IBAction func calculateValues(_ sender: UIButton) {
         var emptyFieldCounter = 0
         var result : Double = 0
@@ -94,7 +116,7 @@ class MortgageViewController: UIViewController {
         if interestRate == nil {
             emptyField = CalculationCases.timePeriod
             
-            let errorAlert = UIAlertController(title: "Error", message: "INTEREST RATE can't be EMPTY", preferredStyle: UIAlertController.Style.alert)
+            let errorAlert = UIAlertController(title: "Error", message: "INTEREST RATE MISSING", preferredStyle: UIAlertController.Style.alert)
             let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
             errorAlert.addAction(okButton);
             self.present(errorAlert, animated: true, completion: nil)
@@ -106,7 +128,7 @@ class MortgageViewController: UIViewController {
             emptyFieldCounter += 1
         }
         
-        let monthlyPayment: Double! = Double(txtYearlyAmount.text!)
+        let monthlyPayment: Double! = Double(txtYearlyPaymentAmount.text!)
         if monthlyPayment == nil {
             emptyField = CalculationCases.monthlyPaymentAmount
             emptyFieldCounter += 1
@@ -127,14 +149,17 @@ class MortgageViewController: UIViewController {
             
         case .monthlyPaymentAmount:
             result = MortgageAndLoans.getMonthlyPaymentAmount(principleAmount: principleAmount, interestRate: interestRate, timePeriod: timePeriod)
-            txtYearlyAmount.text = String(format: "%.2f", result)
+            TextFieldAnimation.scapeUpAnimation(textField: txtYearlyPaymentAmount)
+            txtYearlyPaymentAmount.text = String(format: "%.2f", result)
             
         case .timePeriod:
             result = MortgageAndLoans.getTimePeriod(principleAmount: principleAmount, monthlyPaymentAmount: monthlyPayment, interestRate: interestRate)
+            TextFieldAnimation.scapeUpAnimation(textField: txtTimePeriod)
             txtTimePeriod.text = String(format: "%.2f", result)
             
         case .principleAmount:
             result = MortgageAndLoans.getPrincipleAmount(monthlyPaymentAmount: monthlyPayment, interestRate: interestRate, timePeriod: timePeriod)
+            TextFieldAnimation.scapeUpAnimation(textField: txtPrincipleAmount)
             txtPrincipleAmount.text = String(format: "%.2f", result)
             
         default:

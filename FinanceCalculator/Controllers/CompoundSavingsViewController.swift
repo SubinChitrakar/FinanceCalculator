@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CompoundSavingsViewController: UIViewController {
+class CompoundSavingsViewController: UIViewController, UIViewControllerTransitioningDelegate {
 
     @IBOutlet weak var txtPrincipleAmount: UITextField!
     @IBOutlet weak var txtInterestRate: UITextField!
@@ -17,12 +17,13 @@ class CompoundSavingsViewController: UIViewController {
     @IBOutlet weak var txtFutureAmount: UITextField!
     
     @IBOutlet weak var switchPaymentAtBeginning: UISwitch!
+    @IBOutlet weak var btnHelp: UIButton!
     
     var emptyField = CalculationCases.empty
-    
     var firstTimeOpen = true
-    
+
     let defaults = UserDefaults.standard
+    let transition = CircularTransition()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,25 +45,6 @@ class CompoundSavingsViewController: UIViewController {
             switchPaymentAtBeginning.isOn = defaults.bool(forKey: "SwitchForBeginningCompoundSavings")
         }
         closeKeyboard()
-    }
-    
-    @objc func saveData(){
-        defaults.set(self.txtPrincipleAmount.text, forKey: "PrincipleAmountCompoundSavings")
-        defaults.set(self.txtInterestRate.text, forKey: "InterestRateCompoundSavings")
-        defaults.set(self.txtTimePeriod.text, forKey: "TimePeriodCompoundSavings")
-        defaults.set(self.txtMonthlyPaymentAmount.text, forKey: "MonthlyPaymentAmountCompoundSavings")
-        defaults.set(self.txtFutureAmount.text, forKey: "FutureAmountCompoundSavings")
-        defaults.set(self.switchPaymentAtBeginning.isOn, forKey: "SwitchForBeginningCompoundSavings")
-    }
-    
-    @objc func closeKeyboard() {
-        view.endEditing(true)
-        if (KeyboardStatus.open){
-            var tabBarFrame: CGRect = (self.tabBarController?.tabBar.frame)!
-            tabBarFrame.origin.y = KeyboardStatus.defaultLocation
-            self.tabBarController?.tabBar.frame = tabBarFrame
-            KeyboardStatus.open = false
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,6 +69,44 @@ class CompoundSavingsViewController: UIViewController {
         }
     }
     
+    @objc func closeKeyboard() {
+        view.endEditing(true)
+        if (KeyboardStatus.open){
+            var tabBarFrame: CGRect = (self.tabBarController?.tabBar.frame)!
+            tabBarFrame.origin.y = KeyboardStatus.defaultLocation
+            self.tabBarController?.tabBar.frame = tabBarFrame
+            KeyboardStatus.open = false
+        }
+    }
+    
+    @objc func saveData(){
+        defaults.set(self.txtPrincipleAmount.text, forKey: "PrincipleAmountCompoundSavings")
+        defaults.set(self.txtInterestRate.text, forKey: "InterestRateCompoundSavings")
+        defaults.set(self.txtTimePeriod.text, forKey: "TimePeriodCompoundSavings")
+        defaults.set(self.txtMonthlyPaymentAmount.text, forKey: "MonthlyPaymentAmountCompoundSavings")
+        defaults.set(self.txtFutureAmount.text, forKey: "FutureAmountCompoundSavings")
+        defaults.set(self.switchPaymentAtBeginning.isOn, forKey: "SwitchForBeginningCompoundSavings")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let helpViewController = segue.destination as! HelpCompoundSavingsViewController
+        helpViewController.transitioningDelegate = self
+        helpViewController.modalPresentationStyle = .custom
+    }
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .present
+        transition.startingPoint = btnHelp.center
+        transition.circleColor = UIColor.init(red: 57/255, green: 31/255, blue: 67/255, alpha: 1.00)
+        return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .dismiss
+        transition.startingPoint = btnHelp.center
+        transition.circleColor = UIColor.init(red: 57/255, green: 31/255, blue: 67/255, alpha: 1.00)
+        return transition
+    }
     
     @IBAction func calculateValues(_ sender: UIButton) {
         var emptyFieldCounter = 0
@@ -94,8 +114,11 @@ class CompoundSavingsViewController: UIViewController {
         
         let principleAmount: Double! = Double(txtPrincipleAmount.text!)
         if principleAmount == nil {
-            emptyField = CalculationCases.principleAmount
-            emptyFieldCounter += 1
+            emptyField = CalculationCases.empty
+            let errorAlert = UIAlertController(title: "Error", message: "PRINCIPLE AMOUNT MISSING", preferredStyle: UIAlertController.Style.alert)
+            let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            errorAlert.addAction(okButton);
+            self.present(errorAlert, animated: true, completion: nil)
         }
         
         let timePeriod: Double! = Double(txtTimePeriod.text!)
@@ -118,9 +141,11 @@ class CompoundSavingsViewController: UIViewController {
         
         let interestRate: Double! = Double(txtInterestRate.text!)
         if interestRate == nil{
-            
             emptyField = CalculationCases.empty
-            
+            let errorAlert = UIAlertController(title: "Error", message: "INTEREST RATE MISSING", preferredStyle: UIAlertController.Style.alert)
+            let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            errorAlert.addAction(okButton);
+            self.present(errorAlert, animated: true, completion: nil)
         }
         
         if (emptyFieldCounter == 0 && emptyField == CalculationCases.empty) || emptyFieldCounter > 1 {
@@ -142,7 +167,7 @@ class CompoundSavingsViewController: UIViewController {
             else{
                 result = CompoundSaving.getFutureValueForDepositAtEnd(principleAmount: principleAmount, interestRate: interestRate, timePeriod: timePeriod, monthlyPaymentAmount: monthlyPayment)
             }
-            
+            TextFieldAnimation.scapeUpAnimation(textField: txtFutureAmount)
             txtFutureAmount.text = String(format: "%.2f", result)
         
         case .monthlyPaymentAmount:
@@ -152,7 +177,7 @@ class CompoundSavingsViewController: UIViewController {
             else{
                 result = CompoundSaving.getMonthlyPaymentForDepositAtEnd(principleAmount: principleAmount, interestRate: interestRate, timePeriod: timePeriod, futureAmount: futureAmount)
             }
-            
+            TextFieldAnimation.scapeUpAnimation(textField: txtMonthlyPaymentAmount)
             txtMonthlyPaymentAmount.text = String(format: "%.2f", result)
             
         case .timePeriod:
@@ -162,7 +187,7 @@ class CompoundSavingsViewController: UIViewController {
             else{
                 result = CompoundSaving.getTimePeriodForDepositAtEnd(principleAmount: principleAmount, interestRate: interestRate, monthlyPaymentAmount: monthlyPayment, futureAmount: futureAmount)
             }
-            
+            TextFieldAnimation.scapeUpAnimation(textField: txtTimePeriod)
             txtTimePeriod.text = String(format: "%.2f", result)
             
         default:

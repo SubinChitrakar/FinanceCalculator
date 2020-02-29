@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		DF30C214240AA03A0008C481 /* TextFieldAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30C213240AA03A0008C481 /* TextFieldAnimation.swift */; };
-		DF30C216240AA6750008C481 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30C215240AA6750008C481 /* HelpViewController.swift */; };
 		DF30C218240AB5E00008C481 /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30C217240AB5E00008C481 /* CircularTransition.swift */; };
+		DF30C21A240AD7AF0008C481 /* HelpSimpleSavingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30C219240AD7AF0008C481 /* HelpSimpleSavingsViewController.swift */; };
+		DF30C21D240ADFDD0008C481 /* HelpCompoundSavingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30C21C240ADFDD0008C481 /* HelpCompoundSavingsViewController.swift */; };
+		DF30C21F240AE34D0008C481 /* HelpMortgageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30C21E240AE34D0008C481 /* HelpMortgageViewController.swift */; };
+		DF30C221240AE3EC0008C481 /* HelpLoansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30C220240AE3EC0008C481 /* HelpLoansViewController.swift */; };
 		DF3177922406B6E6001B251A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3177912406B6E6001B251A /* TabBarViewController.swift */; };
 		DF5F758324043A07009C3BD7 /* LoansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F758224043A07009C3BD7 /* LoansViewController.swift */; };
 		DF5F758524044460009C3BD7 /* CompoundSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5F758424044460009C3BD7 /* CompoundSaving.swift */; };
@@ -41,8 +44,11 @@
 
 /* Begin PBXFileReference section */
 		DF30C213240AA03A0008C481 /* TextFieldAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAnimation.swift; sourceTree = "<group>"; };
-		DF30C215240AA6750008C481 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		DF30C217240AB5E00008C481 /* CircularTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
+		DF30C219240AD7AF0008C481 /* HelpSimpleSavingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpSimpleSavingsViewController.swift; sourceTree = "<group>"; };
+		DF30C21C240ADFDD0008C481 /* HelpCompoundSavingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpCompoundSavingsViewController.swift; sourceTree = "<group>"; };
+		DF30C21E240AE34D0008C481 /* HelpMortgageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpMortgageViewController.swift; sourceTree = "<group>"; };
+		DF30C220240AE3EC0008C481 /* HelpLoansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpLoansViewController.swift; sourceTree = "<group>"; };
 		DF3177912406B6E6001B251A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		DF5F758224043A07009C3BD7 /* LoansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoansViewController.swift; sourceTree = "<group>"; };
 		DF5F758424044460009C3BD7 /* CompoundSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundSaving.swift; sourceTree = "<group>"; };
@@ -75,14 +81,25 @@
 		DF30C212240A94510008C481 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DF30C21B240ADCF40008C481 /* HelpControllers */,
 				DF5F758A240456D8009C3BD7 /* CompoundSavingsViewController.swift */,
 				DF5F758224043A07009C3BD7 /* LoansViewController.swift */,
 				DFD8C167240193C9001E8B8F /* MortgageViewController.swift */,
 				DF5F758624045608009C3BD7 /* SimpleSavingsViewController.swift */,
 				DF3177912406B6E6001B251A /* TabBarViewController.swift */,
-				DF30C215240AA6750008C481 /* HelpViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DF30C21B240ADCF40008C481 /* HelpControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DF30C219240AD7AF0008C481 /* HelpSimpleSavingsViewController.swift */,
+				DF30C21C240ADFDD0008C481 /* HelpCompoundSavingsViewController.swift */,
+				DF30C21E240AE34D0008C481 /* HelpMortgageViewController.swift */,
+				DF30C220240AE3EC0008C481 /* HelpLoansViewController.swift */,
+			);
+			path = HelpControllers;
 			sourceTree = "<group>";
 		};
 		DFBEA56E240161CE0054E70E = {
@@ -209,16 +226,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF30C21D240ADFDD0008C481 /* HelpCompoundSavingsViewController.swift in Sources */,
 				DF5F758B240456D8009C3BD7 /* CompoundSavingsViewController.swift in Sources */,
+				DF30C21F240AE34D0008C481 /* HelpMortgageViewController.swift in Sources */,
 				DF5F758324043A07009C3BD7 /* LoansViewController.swift in Sources */,
 				DF3177922406B6E6001B251A /* TabBarViewController.swift in Sources */,
-				DF30C216240AA6750008C481 /* HelpViewController.swift in Sources */,
 				DFC8D49A24057E74007ABF74 /* KeyboardStatus.swift in Sources */,
 				DFD8C16A2401A05F001E8B8F /* MortagageAndLoans.swift in Sources */,
 				DFBEA594240176B50054E70E /* SimpleSaving.swift in Sources */,
 				DF5F758524044460009C3BD7 /* CompoundSaving.swift in Sources */,
+				DF30C21A240AD7AF0008C481 /* HelpSimpleSavingsViewController.swift in Sources */,
 				DFBEA59724017FA30054E70E /* CalculationCases.swift in Sources */,
 				DF30C218240AB5E00008C481 /* CircularTransition.swift in Sources */,
+				DF30C221240AE3EC0008C481 /* HelpLoansViewController.swift in Sources */,
 				DF30C214240AA03A0008C481 /* TextFieldAnimation.swift in Sources */,
 				DF5F758724045608009C3BD7 /* SimpleSavingsViewController.swift in Sources */,
 				DFD8C168240193C9001E8B8F /* MortgageViewController.swift in Sources */,
