@@ -13,7 +13,7 @@ class HelpLoansViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
- 
+    
     @IBAction func closeButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }

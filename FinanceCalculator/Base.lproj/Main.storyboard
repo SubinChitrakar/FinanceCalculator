@@ -207,12 +207,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XXT-6J-TpT">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HelpPageLoans" translatesAutoresizingMaskIntoConstraints="NO" id="mhg-v2-Gxz">
+                                <rect key="frame" x="20" y="44" width="374" height="818"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLQ-eA-Nfv">
                                 <rect key="frame" x="354" y="60" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="Close"/>
                                 <connections>
-                                    <action selector="closeButtonPressed:" destination="QkS-fw-wVS" eventType="touchUpInside" id="6Z6-u8-Fyt"/>
+                                    <action selector="closeButtonPressed:" destination="117-kE-68h" eventType="touchUpInside" id="saU-DP-tmU"/>
+                                    <action selector="closeButtonPressed:" destination="QkS-fw-wVS" eventType="touchUpInside" id="vlO-Qp-su9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -413,6 +418,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HelpPageCompoundSaving" translatesAutoresizingMaskIntoConstraints="NO" id="rr7-gN-xQ5">
+                                <rect key="frame" x="20" y="44" width="374" height="818"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tSE-c2-7xL">
                                 <rect key="frame" x="354" y="60" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
@@ -490,6 +499,8 @@
         <image name="Close" width="30" height="30"/>
         <image name="Compound Savings" width="30" height="30"/>
         <image name="Help" width="30" height="30"/>
+        <image name="HelpPageCompoundSaving" width="562.5" height="1218"/>
+        <image name="HelpPageLoans" width="562.5" height="1218"/>
         <image name="HelpPageMortgage" width="562.5" height="1218"/>
         <image name="HelpPageSimpleSaving" width="562.5" height="1218"/>
         <image name="Loan" width="30" height="30"/>
