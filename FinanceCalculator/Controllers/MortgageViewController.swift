@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MortgageViewController: UIViewController, UIViewControllerTransitioningDelegate{
+class MortgageViewController: UIViewController, UIViewControllerTransitioningDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var txtPrincipleAmount: UITextField!
     @IBOutlet weak var txtInterestRate: UITextField!
@@ -40,7 +40,23 @@ class MortgageViewController: UIViewController, UIViewControllerTransitioningDel
             txtTimePeriod.text = defaults.string(forKey: "TimePeriodMortgage")
             txtYearlyPaymentAmount.text = defaults.string(forKey: "YearlyAmountMortgage")
         }
+        txtPrincipleAmount.delegate = self
+        txtInterestRate.delegate = self
+        txtTimePeriod.delegate = self
+        txtYearlyPaymentAmount.delegate = self
         closeKeyboard()
+    }
+    
+    func textField(_ textField: UITextField,shouldChangeCharactersIn range: NSRange,replacementString string: String) -> Bool
+    {
+        let text = textField.text!.filter("1234567890.".contains)
+        let dotCount = text.components(separatedBy: ".").count - 1
+        if dotCount > 0 && string == "."
+        {
+            return false
+        }
+        StringFormatter.putSign(textField: textField, text: text)
+        return true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,13 +122,13 @@ class MortgageViewController: UIViewController, UIViewControllerTransitioningDel
         var emptyFieldCounter = 0
         var result : Double = 0
         
-        let principleAmount: Double! = Double(txtPrincipleAmount.text!)
+        let principleAmount: Double! = Double(txtPrincipleAmount.text!.filter("1234567890.".contains))
         if principleAmount == nil {
             emptyField = CalculationCases.principleAmount
             emptyFieldCounter += 1
         }
         
-        let interestRate: Double! = Double(txtInterestRate.text!)
+        let interestRate: Double! = Double(txtInterestRate.text!.filter("1234567890.".contains))
         if interestRate == nil {
             emptyField = CalculationCases.timePeriod
             
@@ -122,13 +138,13 @@ class MortgageViewController: UIViewController, UIViewControllerTransitioningDel
             self.present(errorAlert, animated: true, completion: nil)
         }
         
-        let timePeriod: Double! = Double(txtTimePeriod.text!)
+        let timePeriod: Double! = Double(txtTimePeriod.text!.filter("1234567890.".contains))
         if timePeriod == nil {
             emptyField = CalculationCases.timePeriod
             emptyFieldCounter += 1
         }
         
-        let monthlyPayment: Double! = Double(txtYearlyPaymentAmount.text!)
+        let monthlyPayment: Double! = Double(txtYearlyPaymentAmount.text!.filter("1234567890.".contains))
         if monthlyPayment == nil {
             emptyField = CalculationCases.monthlyPaymentAmount
             emptyFieldCounter += 1
@@ -150,7 +166,7 @@ class MortgageViewController: UIViewController, UIViewControllerTransitioningDel
         case .monthlyPaymentAmount:
             result = MortgageAndLoans.getMonthlyPaymentAmount(principleAmount: principleAmount, interestRate: interestRate, timePeriod: timePeriod)
             TextFieldAnimation.scapeUpAnimation(textField: txtYearlyPaymentAmount)
-            txtYearlyPaymentAmount.text = String(format: "%.2f", result)
+            txtYearlyPaymentAmount.text = String(format: "£ %.2f", result)
             
         case .timePeriod:
             result = MortgageAndLoans.getTimePeriod(principleAmount: principleAmount, monthlyPaymentAmount: monthlyPayment, interestRate: interestRate)
@@ -160,7 +176,7 @@ class MortgageViewController: UIViewController, UIViewControllerTransitioningDel
         case .principleAmount:
             result = MortgageAndLoans.getPrincipleAmount(monthlyPaymentAmount: monthlyPayment, interestRate: interestRate, timePeriod: timePeriod)
             TextFieldAnimation.scapeUpAnimation(textField: txtPrincipleAmount)
-            txtPrincipleAmount.text = String(format: "%.2f", result)
+            txtPrincipleAmount.text = String(format: "£ %.2f", result)
             
         default:
             return

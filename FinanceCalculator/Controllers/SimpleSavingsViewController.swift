@@ -9,7 +9,7 @@
 import UIKit
 
 
-class SimpleSavingsViewController: UIViewController, UIViewControllerTransitioningDelegate{
+class SimpleSavingsViewController: UIViewController, UIViewControllerTransitioningDelegate, UITextFieldDelegate{
     
     @IBOutlet weak var txtPrincipleAmount: UITextField!
     @IBOutlet weak var txtInterestRate: UITextField!
@@ -27,7 +27,7 @@ class SimpleSavingsViewController: UIViewController, UIViewControllerTransitioni
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if (firstTimeOpen){
             super.viewDidLoad()
             firstTimeOpen = false
@@ -42,9 +42,26 @@ class SimpleSavingsViewController: UIViewController, UIViewControllerTransitioni
             txtTimePeriod.text = defaults.string(forKey: "TimePeriodSimpleSavings")
             txtSimpleSavingsAmount.text = defaults.string(forKey: "SimpleSavingAmount")
         }
+        
+        txtPrincipleAmount.delegate = self
+        txtInterestRate.delegate = self
+        txtTimePeriod.delegate = self
+        txtSimpleSavingsAmount.delegate = self
+        
         closeKeyboard()
     }
     
+    func textField(_ textField: UITextField,shouldChangeCharactersIn range: NSRange,replacementString string: String) -> Bool
+    {
+        let text = textField.text!.filter("1234567890.".contains)
+        let dotCount = text.components(separatedBy: ".").count - 1
+        if dotCount > 0 && string == "."
+        {
+            return false
+        }
+        StringFormatter.putSign(textField: textField, text: text)
+        return true
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -116,25 +133,25 @@ class SimpleSavingsViewController: UIViewController, UIViewControllerTransitioni
         var emptyFieldCounter = 0
         let result : Double
         
-        let principleAmount: Double! = Double(txtPrincipleAmount.text!)
+        let principleAmount: Double! = Double(txtPrincipleAmount.text!.filter("1234567890.".contains))
         if principleAmount == nil {
             emptyField = CalculationCases.principleAmount
             emptyFieldCounter += 1
         }
         
-        let interestRate: Double! = Double(txtInterestRate.text!)
+        let interestRate: Double! = Double(txtInterestRate.text!.filter("1234567890.".contains))
         if interestRate == nil {
             emptyField = CalculationCases.interestRate
             emptyFieldCounter += 1
         }
         
-        let timePeriod: Double! = Double(txtTimePeriod.text!)
+        let timePeriod: Double! = Double(txtTimePeriod.text!.filter("1234567890.".contains))
         if timePeriod == nil {
             emptyField = CalculationCases.timePeriod
             emptyFieldCounter += 1
         }
         
-        let compoundSaving: Double! = Double(txtSimpleSavingsAmount.text!)
+        let compoundSaving: Double! = Double(txtSimpleSavingsAmount.text!.filter("1234567890.".contains))
         if compoundSaving == nil {
             emptyField = CalculationCases.futureAmount
             emptyFieldCounter += 1
@@ -149,21 +166,23 @@ class SimpleSavingsViewController: UIViewController, UIViewControllerTransitioni
             self.present(errorAlert, animated: true, completion: nil)
         }
         
+        print(emptyField)
+        
         switch emptyField {
         case .futureAmount:
             result = SimpleSaving.getCompoundSavingsAmount(principleAmount: principleAmount, interestRate: interestRate, timePeriod: timePeriod)
             TextFieldAnimation.scapeUpAnimation(textField: txtSimpleSavingsAmount)
-            txtSimpleSavingsAmount.text = String(format: "%.2f", result)
+            txtSimpleSavingsAmount.text = String(format: "£ %.2f", result)
             
         case .principleAmount:
             result = SimpleSaving.getPrincipleAmount(compoundSaving: compoundSaving, interestRate: interestRate, timePeriod: timePeriod)
             TextFieldAnimation.scapeUpAnimation(textField: txtPrincipleAmount)
-            txtPrincipleAmount.text = String(format: "%.2f", result)
+            txtPrincipleAmount.text = String(format: "£ %.2f", result)
             
         case .interestRate:
             result = SimpleSaving.getInterestRate(compoundSaving: compoundSaving, principleAmount: principleAmount, timePeriod: timePeriod)
             TextFieldAnimation.scapeUpAnimation(textField: txtInterestRate)
-            txtInterestRate.text = String(format: "%.2f", result * 100)
+            txtInterestRate.text = "% " + String(format: "%.2f", result * 100)
             
         case .timePeriod:
             result = SimpleSaving.getTimePeriod(compoundInterest: compoundSaving, principleAmount: principleAmount, interestRate: interestRate)

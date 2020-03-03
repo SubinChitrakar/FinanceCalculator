@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CompoundSavingsViewController: UIViewController, UIViewControllerTransitioningDelegate {
+class CompoundSavingsViewController: UIViewController, UIViewControllerTransitioningDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var txtPrincipleAmount: UITextField!
     @IBOutlet weak var txtInterestRate: UITextField!
@@ -44,7 +44,24 @@ class CompoundSavingsViewController: UIViewController, UIViewControllerTransitio
             txtFutureAmount.text = defaults.string(forKey: "FutureAmountCompoundSavings")
             switchPaymentAtBeginning.isOn = defaults.bool(forKey: "SwitchForBeginningCompoundSavings")
         }
+        txtPrincipleAmount.delegate = self
+        txtInterestRate.delegate = self
+        txtTimePeriod.delegate = self
+        txtMonthlyPaymentAmount.delegate = self
+        txtFutureAmount.delegate = self
         closeKeyboard()
+    }
+    
+    func textField(_ textField: UITextField,shouldChangeCharactersIn range: NSRange,replacementString string: String) -> Bool
+    {
+        let text = textField.text!.filter("1234567890.".contains)
+        let dotCount = text.components(separatedBy: ".").count - 1
+        if dotCount > 0 && string == "."
+        {
+            return false
+        }
+        StringFormatter.putSign(textField: textField, text: text)
+        return true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -112,7 +129,7 @@ class CompoundSavingsViewController: UIViewController, UIViewControllerTransitio
         var emptyFieldCounter = 0
         var result : Double = 0
         
-        let principleAmount: Double! = Double(txtPrincipleAmount.text!)
+        let principleAmount: Double! = Double(txtPrincipleAmount.text!.filter("1234567890.".contains))
         if principleAmount == nil {
             emptyField = CalculationCases.empty
             let errorAlert = UIAlertController(title: "Error", message: "PRINCIPLE AMOUNT MISSING", preferredStyle: UIAlertController.Style.alert)
@@ -121,25 +138,25 @@ class CompoundSavingsViewController: UIViewController, UIViewControllerTransitio
             self.present(errorAlert, animated: true, completion: nil)
         }
         
-        let timePeriod: Double! = Double(txtTimePeriod.text!)
+        let timePeriod: Double! = Double(txtTimePeriod.text!.filter("1234567890.".contains))
         if timePeriod == nil {
             emptyField = CalculationCases.timePeriod
             emptyFieldCounter += 1
         }
         
-        let monthlyPayment: Double! = Double(txtMonthlyPaymentAmount.text!)
+        let monthlyPayment: Double! = Double(txtMonthlyPaymentAmount.text!.filter("1234567890.".contains))
         if monthlyPayment == nil{
             emptyField = CalculationCases.monthlyPaymentAmount
             emptyFieldCounter += 1
         }
         
-        let futureAmount: Double! = Double(txtFutureAmount.text!)
+        let futureAmount: Double! = Double(txtFutureAmount.text!.filter("1234567890.".contains))
         if futureAmount == nil{
             emptyField = CalculationCases.futureAmount
             emptyFieldCounter += 1
         }
         
-        let interestRate: Double! = Double(txtInterestRate.text!)
+        let interestRate: Double! = Double(txtInterestRate.text!.filter("1234567890.".contains))
         if interestRate == nil{
             emptyField = CalculationCases.empty
             let errorAlert = UIAlertController(title: "Error", message: "INTEREST RATE MISSING", preferredStyle: UIAlertController.Style.alert)
@@ -168,7 +185,7 @@ class CompoundSavingsViewController: UIViewController, UIViewControllerTransitio
                 result = CompoundSaving.getFutureValueForDepositAtEnd(principleAmount: principleAmount, interestRate: interestRate, timePeriod: timePeriod, monthlyPaymentAmount: monthlyPayment)
             }
             TextFieldAnimation.scapeUpAnimation(textField: txtFutureAmount)
-            txtFutureAmount.text = String(format: "%.2f", result)
+            txtFutureAmount.text = String(format: "£ %.2f", result)
         
         case .monthlyPaymentAmount:
             if switchPaymentAtBeginning.isOn {
@@ -178,7 +195,7 @@ class CompoundSavingsViewController: UIViewController, UIViewControllerTransitio
                 result = CompoundSaving.getMonthlyPaymentForDepositAtEnd(principleAmount: principleAmount, interestRate: interestRate, timePeriod: timePeriod, futureAmount: futureAmount)
             }
             TextFieldAnimation.scapeUpAnimation(textField: txtMonthlyPaymentAmount)
-            txtMonthlyPaymentAmount.text = String(format: "%.2f", result)
+            txtMonthlyPaymentAmount.text = String(format: "£ %.2f", result)
             
         case .timePeriod:
             if switchPaymentAtBeginning.isOn {
