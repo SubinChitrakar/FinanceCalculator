@@ -14,6 +14,7 @@ class HelpMortgageViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    //the action function to close the help view when X button is pressed
     @IBAction func closeButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }

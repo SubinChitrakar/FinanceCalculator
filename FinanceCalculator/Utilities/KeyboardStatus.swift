@@ -9,9 +9,15 @@
 import Foundation
 import UIKit
 
+/*
+    Class to save properties for keyboard
+ */
 class KeyboardStatus
 {
+    //property to check whether the keyboard is open or not
     static var open  = false
+    //property to save location of the keyboard
     static var defaultLocation: CGFloat = -1
+    //property to save height of the keyboard
     static var keyBoardHeight: CGFloat = -1
 }

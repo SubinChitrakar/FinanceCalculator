@@ -8,7 +8,12 @@
 
 import Foundation
 
+/*
+    class for finding missing values for Compound Savings with monthly investment
+ */
 class CompoundSaving{
+    
+    //method to get the future value when payment is done at the end   from principle value, interest rate, time period and monthly payment
     static func getFutureValueForDepositAtEnd(principleAmount : Double, interestRate : Double, timePeriod : Double, monthlyPaymentAmount : Double) -> Double {
         
         let compoundInterestForPrinciple = principleAmount * pow((1 + interestRate / 100 / 12), 12 * timePeriod)
@@ -21,6 +26,7 @@ class CompoundSaving{
         return futureAmount + compoundInterestForPrinciple
     }
  
+     //method to get the monthly payment when deposit is at the end from principle amount, interest rate, time period and future amount
     static func getMonthlyPaymentForDepositAtEnd(principleAmount : Double, interestRate : Double, timePeriod : Double, futureAmount : Double) -> Double{
         
         let compoundInterestForPrinciple = principleAmount * pow((1 + interestRate / 100 / 12), 12 * timePeriod)
@@ -31,6 +37,7 @@ class CompoundSaving{
         return (futureAmount - compoundInterestForPrinciple) / (topFormula / bottomFormula)
     }
     
+    //method to get the time period of the saving when payment is done at the end from principle amount, interest rate, monthly payment and future amount
     static func getTimePeriodForDepositAtEnd(principleAmount : Double, interestRate : Double, monthlyPaymentAmount : Double, futureAmount : Double) -> Double{
         
         let leftFormulaTop = (futureAmount * (interestRate / 100 / 12)) + monthlyPaymentAmount
@@ -43,6 +50,7 @@ class CompoundSaving{
         return leftFormula * rightForumla
     }
     
+    //method to get the future value when payment is done at the beginning from principle value, interest rate, time period and monthly payment
     static func getFutureValueForDepositAtBeginning(principleAmount : Double, interestRate : Double, timePeriod : Double, monthlyPaymentAmount : Double) -> Double {
         
         let compoundInterestForPrinciple = principleAmount * pow((1 + interestRate / 100 / 12), 12 * timePeriod)
@@ -56,6 +64,7 @@ class CompoundSaving{
         return futureAmount + compoundInterestForPrinciple
     }
     
+    //method to get the monthly payment when deposit is at the beginning from principle amount, interest rate, time period and future amount
     static func getMonthlyPaymentForDepositAtBeginning(principleAmount : Double, interestRate : Double, timePeriod : Double, futureAmount : Double) -> Double{
         
         let compoundInterestForPrinciple = principleAmount * pow((1 + interestRate / 100 / 12), 12 * timePeriod)
@@ -67,6 +76,7 @@ class CompoundSaving{
         return (futureAmount - compoundInterestForPrinciple) / ((topFormula / bottomFormula) * series)
     }
     
+    //method to get the time period of the saving when payment is done at the beginning from principle amount, interest rate, monthly payment and future amount
     static func getTimePeriodForDepositAtBeginning(principleAmount : Double, interestRate : Double, monthlyPaymentAmount : Double, futureAmount : Double) -> Double{
         
         let topFormulaPartA = futureAmount + (monthlyPaymentAmount / (interestRate / 100 / 12)) + monthlyPaymentAmount

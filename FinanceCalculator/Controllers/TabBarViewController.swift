@@ -8,11 +8,18 @@
 
 import UIKit
 
+/*
+    Class to manage the tabViewController
+ */
 class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     let loadingLogo = UIImageView(image: UIImage(named: "Logo")!)
     let splashView  = UIView()
     
+    /*
+        Constructor loads the view
+        Similarly, the method creates another view as a splash screen programmatically
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,16 +33,26 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         self.delegate = self
     }
     
+    /*
+        The method runs as a response to tab change and loads the view of the tab
+     */
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         viewController.viewDidLoad()
     }
     
+    /*
+        The method delays the screen for a second and runs the scale down animation before the splash screen disappears
+     */
     override func viewDidAppear(_ animated: Bool) {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1){
             self.scaleDownAnimation()
         }
     }
     
+    /*
+        The method reduces the size of the logo from the splash screen
+        and on completion runs another method i.e. ScaleUpAnimation
+     */
     func scaleDownAnimation(){
         UIView.animate(withDuration: 0.5, animations: {
             self.loadingLogo.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
@@ -44,6 +61,10 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         }
     }
     
+    /*
+        The method increased the size of the logo and rotates it
+        and on completion runs another method i.e. removeSplashScreen
+     */
     func scaleUpAnimation(){
         UIView.animate(withDuration: 0.35, delay: 0.1, options: .curveEaseIn, animations: {
             self.loadingLogo.transform = self.loadingLogo.transform.rotated(by: CGFloat(Double.pi))
@@ -53,6 +74,9 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         }
     }
     
+    /*
+        The method removes the splash screen view from the frame
+     */
     func removeSplashScreen(){
         splashView.removeFromSuperview()
     }

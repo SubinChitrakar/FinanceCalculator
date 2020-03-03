@@ -8,6 +8,16 @@
 
 import UIKit
 
+/*
+    Followed tutorial from : https://www.youtube.com/watch?v=B9sH_VxPPo4
+ 
+    CirculatTransition is a class which only holds the properties for the animation of help page
+    The properties include
+        a. A view
+        b. The starting point of the View
+        c. The duration of the animation
+        d. The transition phase of the animation
+ */
 class CircularTransition: NSObject {
 
     var circle = UIView()
@@ -30,11 +40,24 @@ class CircularTransition: NSObject {
     
 }
 
+/*
+    An extension of the class which inherits from UIViewControllerAnimatedTransitioning
+ */
 extension CircularTransition:UIViewControllerAnimatedTransitioning{
+    
+    /*
+        implemented method transitionDuration
+        the method returns the duration of the animation
+     */
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration
     }
     
+    /*
+        implemented method animateTransition
+        the method created a cicle view and created an animation to cover the frame if the status is present
+        else created another view to cover the help view and remove it while it uncovers
+     */
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
         
@@ -66,9 +89,11 @@ extension CircularTransition:UIViewControllerAnimatedTransitioning{
                     transitionContext.completeTransition(success)
                 })
             }
-        }else{
+        }
+        else{
             let transitionModeKey = (transitionMode == .pop) ? UITransitionContextViewKey.to : UITransitionContextViewKey.from
             if let returningView = transitionContext.view(forKey: transitionModeKey){
+                
                 let viewCenter = returningView.center
                 let viewSize = returningView.frame.size
                 
@@ -98,6 +123,9 @@ extension CircularTransition:UIViewControllerAnimatedTransitioning{
         }
     }
     
+    /*
+        Method to return the frame of the circle
+     */
     func frameForCircle(withViewCenter viewCenter:CGPoint, size viewSize:CGSize, startPoint:CGPoint) -> CGRect{
         
         let xLength = fmax(startPoint.x, viewSize.width - startPoint.x)

@@ -10,7 +10,11 @@ import Foundation
 import UIKit
 
 class StringFormatter{
-    
+    /*
+        method to put signs before the textfield from the tag of the textfield
+        1 for pound sign
+        2 for percentage sign
+     */
     static func putSign(textField : UITextField, text : String)
     {
         switch textField.tag {

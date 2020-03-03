@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Enum to get different cases for calculations
 enum CalculationCases {
     case empty
     case principleAmount
