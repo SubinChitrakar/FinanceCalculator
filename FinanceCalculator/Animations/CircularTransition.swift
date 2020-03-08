@@ -9,8 +9,6 @@
 import UIKit
 
 /*
-    Followed tutorial from : https://www.youtube.com/watch?v=B9sH_VxPPo4
- 
     CirculatTransition is a class which only holds the properties for the animation of help page
     The properties include
         a. A view

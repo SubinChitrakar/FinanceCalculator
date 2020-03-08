@@ -17,7 +17,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     let splashView  = UIView()
     
     /*
-        Constructor loads the view
+        The method loads the view
         Similarly, the method creates another view as a splash screen programmatically
      */
     override func viewDidLoad() {
