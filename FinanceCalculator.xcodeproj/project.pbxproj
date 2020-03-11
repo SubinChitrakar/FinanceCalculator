@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF1D5CFB24194B220026F0FA /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1D5CFA24194B220026F0FA /* ToastMessage.swift */; };
 		DF30C214240AA03A0008C481 /* TextFieldAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30C213240AA03A0008C481 /* TextFieldAnimation.swift */; };
 		DF30C218240AB5E00008C481 /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30C217240AB5E00008C481 /* CircularTransition.swift */; };
 		DF30C21A240AD7AF0008C481 /* HelpSimpleSavingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30C219240AD7AF0008C481 /* HelpSimpleSavingsViewController.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DF1D5CFA24194B220026F0FA /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		DF30C213240AA03A0008C481 /* TextFieldAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAnimation.swift; sourceTree = "<group>"; };
 		DF30C217240AB5E00008C481 /* CircularTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
 		DF30C219240AD7AF0008C481 /* HelpSimpleSavingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpSimpleSavingsViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				DFBEA59624017FA30054E70E /* CalculationCases.swift */,
 				DFC8D49924057E74007ABF74 /* KeyboardStatus.swift */,
 				DFC8B4EA240E96C400BB949E /* StringFormatter.swift */,
+				DF1D5CFA24194B220026F0FA /* ToastMessage.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				DF30C218240AB5E00008C481 /* CircularTransition.swift in Sources */,
 				DF30C221240AE3EC0008C481 /* HelpLoansViewController.swift in Sources */,
 				DFC8B4EB240E96C400BB949E /* StringFormatter.swift in Sources */,
+				DF1D5CFB24194B220026F0FA /* ToastMessage.swift in Sources */,
 				DF30C214240AA03A0008C481 /* TextFieldAnimation.swift in Sources */,
 				DF5F758724045608009C3BD7 /* SimpleSavingsViewController.swift in Sources */,
 				DFD8C168240193C9001E8B8F /* MortgageViewController.swift in Sources */,

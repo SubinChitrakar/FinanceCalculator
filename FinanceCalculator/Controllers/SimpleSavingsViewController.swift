@@ -68,6 +68,7 @@ class SimpleSavingsViewController: UIViewController, UIViewControllerTransitioni
     */
     func textField(_ textField: UITextField,shouldChangeCharactersIn range: NSRange,replacementString string: String) -> Bool
     {
+        TextFieldAnimation.convertToNormal(textField: textField)
         let text = textField.text!.filter("1234567890.".contains)
         let dotCount = text.components(separatedBy: ".").count - 1
         if dotCount > 0 && string == "."
@@ -164,6 +165,11 @@ class SimpleSavingsViewController: UIViewController, UIViewControllerTransitioni
         The method to calculate the missing values from the view on clicking the calculate button
     */
     @IBAction func calculateValues(_ sender: UIButton) {
+        closeKeyboard()
+        TextFieldAnimation.convertToNormal(textField: txtPrincipleAmount)
+        TextFieldAnimation.convertToNormal(textField: txtInterestRate)
+        TextFieldAnimation.convertToNormal(textField: txtTimePeriod)
+        TextFieldAnimation.convertToNormal(textField: txtSimpleSavingsAmount)
         
         var emptyFieldCounter = 0
         let result : Double
@@ -195,33 +201,41 @@ class SimpleSavingsViewController: UIViewController, UIViewControllerTransitioni
         if (emptyFieldCounter == 0 && emptyField == CalculationCases.empty) || emptyFieldCounter > 1  {
             emptyField = CalculationCases.empty
             
-            let errorAlert = UIAlertController(title: "Error", message: "More than ONE TEXTFIELDS EMPTY", preferredStyle: UIAlertController.Style.alert)
-            let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            errorAlert.addAction(okButton);
-            self.present(errorAlert, animated: true, completion: nil)
+            ToastView.shared.showToastMessage(self.view, message: "More than one textfield empty")
+            if principleAmount == nil {
+                TextFieldAnimation.errorAnimation(textField: txtPrincipleAmount)
+            }
+            if interestRate == nil {
+                TextFieldAnimation.errorAnimation(textField: txtInterestRate)
+            }
+            if timePeriod == nil {
+                TextFieldAnimation.errorAnimation(textField: txtTimePeriod)
+            }
+            if compoundSaving == nil {
+                TextFieldAnimation.errorAnimation(textField: txtSimpleSavingsAmount)
+            }
         }
         
-        print(emptyField)
         
         switch emptyField {
         case .futureAmount:
             result = SimpleSaving.getCompoundSavingsAmount(principleAmount: principleAmount, interestRate: interestRate, timePeriod: timePeriod)
-            TextFieldAnimation.scapeUpAnimation(textField: txtSimpleSavingsAmount)
+            TextFieldAnimation.successAnimation(textField: txtSimpleSavingsAmount)
             txtSimpleSavingsAmount.text = String(format: "£ %.2f", result)
             
         case .principleAmount:
             result = SimpleSaving.getPrincipleAmount(compoundSaving: compoundSaving, interestRate: interestRate, timePeriod: timePeriod)
-            TextFieldAnimation.scapeUpAnimation(textField: txtPrincipleAmount)
+            TextFieldAnimation.successAnimation(textField: txtPrincipleAmount)
             txtPrincipleAmount.text = String(format: "£ %.2f", result)
             
         case .interestRate:
             result = SimpleSaving.getInterestRate(compoundSaving: compoundSaving, principleAmount: principleAmount, timePeriod: timePeriod)
-            TextFieldAnimation.scapeUpAnimation(textField: txtInterestRate)
+            TextFieldAnimation.successAnimation(textField: txtInterestRate)
             txtInterestRate.text = "% " + String(format: "%.2f", result * 100)
             
         case .timePeriod:
             result = SimpleSaving.getTimePeriod(compoundInterest: compoundSaving, principleAmount: principleAmount, interestRate: interestRate)
-            TextFieldAnimation.scapeUpAnimation(textField: txtTimePeriod)
+            TextFieldAnimation.successAnimation(textField: txtTimePeriod)
             txtTimePeriod.text = String(format: "%.2f", result)
             
         default:

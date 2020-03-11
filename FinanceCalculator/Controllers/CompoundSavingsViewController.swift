@@ -70,6 +70,7 @@ class CompoundSavingsViewController: UIViewController, UIViewControllerTransitio
     */
     func textField(_ textField: UITextField,shouldChangeCharactersIn range: NSRange,replacementString string: String) -> Bool
     {
+        TextFieldAnimation.convertToNormal(textField: textField)
         let text = textField.text!.filter("1234567890.".contains)
         let dotCount = text.components(separatedBy: ".").count - 1
         if dotCount > 0 && string == "."
@@ -167,16 +168,22 @@ class CompoundSavingsViewController: UIViewController, UIViewControllerTransitio
         The method to calculate the missing values from the view on clicking the calculate button
     */
     @IBAction func calculateValues(_ sender: UIButton) {
+        closeKeyboard()
+        TextFieldAnimation.convertToNormal(textField: txtPrincipleAmount)
+        TextFieldAnimation.convertToNormal(textField: txtInterestRate)
+        TextFieldAnimation.convertToNormal(textField: txtTimePeriod)
+        TextFieldAnimation.convertToNormal(textField: txtMonthlyPaymentAmount)
+        TextFieldAnimation.convertToNormal(textField: txtFutureAmount)
+ 
         var emptyFieldCounter = 0
         var result : Double = 0
         
         let principleAmount: Double! = Double(txtPrincipleAmount.text!.filter("1234567890.".contains))
         if principleAmount == nil {
             emptyField = CalculationCases.empty
-            let errorAlert = UIAlertController(title: "Error", message: "PRINCIPLE AMOUNT MISSING", preferredStyle: UIAlertController.Style.alert)
-            let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            errorAlert.addAction(okButton);
-            self.present(errorAlert, animated: true, completion: nil)
+            ToastView.shared.showToastMessage(self.view, message: "Principle Amount is Empty")
+            TextFieldAnimation.errorAnimation(textField: txtPrincipleAmount)
+            return
         }
         
         let timePeriod: Double! = Double(txtTimePeriod.text!.filter("1234567890.".contains))
@@ -200,20 +207,23 @@ class CompoundSavingsViewController: UIViewController, UIViewControllerTransitio
         let interestRate: Double! = Double(txtInterestRate.text!.filter("1234567890.".contains))
         if interestRate == nil{
             emptyField = CalculationCases.empty
-            let errorAlert = UIAlertController(title: "Error", message: "INTEREST RATE MISSING", preferredStyle: UIAlertController.Style.alert)
-            let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            errorAlert.addAction(okButton);
-            self.present(errorAlert, animated: true, completion: nil)
+            ToastView.shared.showToastMessage(self.view, message: "Interest Rate is Empty")
+            TextFieldAnimation.errorAnimation(textField: txtInterestRate)
+            return
         }
         
         if (emptyFieldCounter == 0 && emptyField == CalculationCases.empty) || emptyFieldCounter > 1 {
-            
             emptyField = CalculationCases.empty
-            
-            let errorAlert = UIAlertController(title: "Error", message: "More than ONE TEXTFIELDS EMPTY", preferredStyle: UIAlertController.Style.alert)
-            let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            errorAlert.addAction(okButton);
-            self.present(errorAlert, animated: true, completion: nil)
+            ToastView.shared.showToastMessage(self.view, message: "More than one textfield empty")
+            if timePeriod == nil {
+                TextFieldAnimation.errorAnimation(textField: txtTimePeriod)
+            }
+            if monthlyPayment == nil {
+                TextFieldAnimation.errorAnimation(textField: txtMonthlyPaymentAmount)
+            }
+            if futureAmount == nil {
+                TextFieldAnimation.errorAnimation(textField: txtFutureAmount)
+            }
         }
         
         switch emptyField {
@@ -225,7 +235,7 @@ class CompoundSavingsViewController: UIViewController, UIViewControllerTransitio
             else{
                 result = CompoundSaving.getFutureValueForDepositAtEnd(principleAmount: principleAmount, interestRate: interestRate, timePeriod: timePeriod, monthlyPaymentAmount: monthlyPayment)
             }
-            TextFieldAnimation.scapeUpAnimation(textField: txtFutureAmount)
+            TextFieldAnimation.successAnimation(textField: txtFutureAmount)
             txtFutureAmount.text = String(format: "£ %.2f", result)
         
         case .monthlyPaymentAmount:
@@ -235,7 +245,7 @@ class CompoundSavingsViewController: UIViewController, UIViewControllerTransitio
             else{
                 result = CompoundSaving.getMonthlyPaymentForDepositAtEnd(principleAmount: principleAmount, interestRate: interestRate, timePeriod: timePeriod, futureAmount: futureAmount)
             }
-            TextFieldAnimation.scapeUpAnimation(textField: txtMonthlyPaymentAmount)
+            TextFieldAnimation.successAnimation(textField: txtMonthlyPaymentAmount)
             txtMonthlyPaymentAmount.text = String(format: "£ %.2f", result)
             
         case .timePeriod:
@@ -245,7 +255,7 @@ class CompoundSavingsViewController: UIViewController, UIViewControllerTransitio
             else{
                 result = CompoundSaving.getTimePeriodForDepositAtEnd(principleAmount: principleAmount, interestRate: interestRate, monthlyPaymentAmount: monthlyPayment, futureAmount: futureAmount)
             }
-            TextFieldAnimation.scapeUpAnimation(textField: txtTimePeriod)
+            TextFieldAnimation.successAnimation(textField: txtTimePeriod)
             txtTimePeriod.text = String(format: "%.2f", result)
             
         default:

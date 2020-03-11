@@ -34,4 +34,30 @@ class TextFieldAnimation
             textField.transform = CGAffineTransform(scaleX: 1, y: 1)
         }, completion: nil)
     }
+    
+    /*
+        method to show success animation
+     */
+    static func successAnimation(textField:UITextField){
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.green.cgColor
+        textField.layer.cornerRadius = 5
+        scapeUpAnimation(textField: textField)
+    }
+    
+    /*
+        method to show error animation
+     */
+    static func errorAnimation(textField:UITextField){
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.red.cgColor
+        textField.layer.cornerRadius = 5
+    }
+    
+    /*
+        method to convert the textfield to normal
+     */
+    static func convertToNormal(textField:UITextField){
+        textField.layer.borderWidth = 0
+    }
 }
