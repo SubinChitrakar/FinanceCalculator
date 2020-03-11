@@ -65,6 +65,7 @@ class MortgageViewController: UIViewController, UIViewControllerTransitioningDel
     */
     func textField(_ textField: UITextField,shouldChangeCharactersIn range: NSRange,replacementString string: String) -> Bool
     {
+        TextFieldAnimation.convertToNormal(textField: textField)
         let text = textField.text!.filter("1234567890.".contains)
         let dotCount = text.components(separatedBy: ".").count - 1
         if dotCount > 0 && string == "."
@@ -160,6 +161,12 @@ class MortgageViewController: UIViewController, UIViewControllerTransitioningDel
         The method to calculate the missing values from the view on clicking the calculate button
     */
     @IBAction func calculateValues(_ sender: UIButton) {
+        closeKeyboard()
+        TextFieldAnimation.convertToNormal(textField: txtPrincipleAmount)
+        TextFieldAnimation.convertToNormal(textField: txtInterestRate)
+        TextFieldAnimation.convertToNormal(textField: txtTimePeriod)
+        TextFieldAnimation.convertToNormal(textField: txtYearlyPaymentAmount)
+        
         var emptyFieldCounter = 0
         var result : Double = 0
         
@@ -171,12 +178,10 @@ class MortgageViewController: UIViewController, UIViewControllerTransitioningDel
         
         let interestRate: Double! = Double(txtInterestRate.text!.filter("1234567890.".contains))
         if interestRate == nil {
-            emptyField = CalculationCases.timePeriod
-            
-            let errorAlert = UIAlertController(title: "Error", message: "INTEREST RATE MISSING", preferredStyle: UIAlertController.Style.alert)
-            let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            errorAlert.addAction(okButton);
-            self.present(errorAlert, animated: true, completion: nil)
+            emptyField = CalculationCases.empty
+            ToastView.shared.showToastMessage(self.view, message: "Interest Rate is Empty")
+            TextFieldAnimation.errorAnimation(textField: txtInterestRate)
+            return
         }
         
         let timePeriod: Double! = Double(txtTimePeriod.text!.filter("1234567890.".contains))
@@ -185,8 +190,8 @@ class MortgageViewController: UIViewController, UIViewControllerTransitioningDel
             emptyFieldCounter += 1
         }
         
-        let monthlyPayment: Double! = Double(txtYearlyPaymentAmount.text!.filter("1234567890.".contains))
-        if monthlyPayment == nil {
+        let yearlyPayment: Double! = Double(txtYearlyPaymentAmount.text!.filter("1234567890.".contains))
+        if yearlyPayment == nil {
             emptyField = CalculationCases.monthlyPaymentAmount
             emptyFieldCounter += 1
         }
@@ -195,28 +200,45 @@ class MortgageViewController: UIViewController, UIViewControllerTransitioningDel
             
             emptyField = CalculationCases.empty
             
-            let errorAlert = UIAlertController(title: "Error", message: "More than ONE TEXTFIELDS EMPTY", preferredStyle: UIAlertController.Style.alert)
-            let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            errorAlert.addAction(okButton);
-            self.present(errorAlert, animated: true, completion: nil)
+            ToastView.shared.showToastMessage(self.view, message: "More than one textfield empty")
+            if principleAmount == nil {
+                TextFieldAnimation.errorAnimation(textField: txtPrincipleAmount)
+            }
+            if interestRate == nil {
+                TextFieldAnimation.errorAnimation(textField: txtInterestRate)
+            }
+            if timePeriod == nil {
+                TextFieldAnimation.errorAnimation(textField: txtTimePeriod)
+            }
+            if yearlyPayment == nil {
+                TextFieldAnimation.errorAnimation(textField: txtYearlyPaymentAmount)
+            }
         }
         
+        if principleAmount != nil && yearlyPayment != nil {
+            if principleAmount >= yearlyPayment {
+                ToastView.shared.showToastMessage(self.view, message: "Principle Amount can't be greater than Monthly Amount")
+                TextFieldAnimation.errorAnimation(textField: txtPrincipleAmount)
+                TextFieldAnimation.errorAnimation(textField: txtYearlyPaymentAmount)
+                return
+            }
+        }
         
         switch emptyField {
             
         case .monthlyPaymentAmount:
             result = MortgageAndLoans.getMonthlyPaymentAmount(principleAmount: principleAmount, interestRate: interestRate, timePeriod: timePeriod)
-            TextFieldAnimation.scapeUpAnimation(textField: txtYearlyPaymentAmount)
+            TextFieldAnimation.successAnimation(textField: txtYearlyPaymentAmount)
             txtYearlyPaymentAmount.text = String(format: "£ %.2f", result)
             
         case .timePeriod:
-            result = MortgageAndLoans.getTimePeriod(principleAmount: principleAmount, monthlyPaymentAmount: monthlyPayment, interestRate: interestRate)
-            TextFieldAnimation.scapeUpAnimation(textField: txtTimePeriod)
+            result = MortgageAndLoans.getTimePeriod(principleAmount: principleAmount, monthlyPaymentAmount: yearlyPayment, interestRate: interestRate)
+            TextFieldAnimation.successAnimation(textField: txtTimePeriod)
             txtTimePeriod.text = String(format: "%.2f", result)
             
         case .principleAmount:
-            result = MortgageAndLoans.getPrincipleAmount(monthlyPaymentAmount: monthlyPayment, interestRate: interestRate, timePeriod: timePeriod)
-            TextFieldAnimation.scapeUpAnimation(textField: txtPrincipleAmount)
+            result = MortgageAndLoans.getPrincipleAmount(monthlyPaymentAmount: yearlyPayment, interestRate: interestRate, timePeriod: timePeriod)
+            TextFieldAnimation.successAnimation(textField: txtPrincipleAmount)
             txtPrincipleAmount.text = String(format: "£ %.2f", result)
             
         default:

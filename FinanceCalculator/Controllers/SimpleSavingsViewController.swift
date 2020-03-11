@@ -216,6 +216,14 @@ class SimpleSavingsViewController: UIViewController, UIViewControllerTransitioni
             }
         }
         
+        if principleAmount != nil && compoundSaving != nil {
+            if principleAmount >= compoundSaving {
+                ToastView.shared.showToastMessage(self.view, message: "Principle Amount can't be greater than Compound Savings")
+                TextFieldAnimation.errorAnimation(textField: txtPrincipleAmount)
+                TextFieldAnimation.errorAnimation(textField: txtSimpleSavingsAmount)
+                return
+            }
+        }
         
         switch emptyField {
         case .futureAmount:

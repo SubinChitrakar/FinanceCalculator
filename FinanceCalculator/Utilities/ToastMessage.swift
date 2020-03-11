@@ -53,6 +53,7 @@ class ToastView: UILabel {
         messageLabel.textColor = UIColor.white
         messageLabel.center = overlayView.center
         messageLabel.text = message
+        messageLabel.font = UIFont(name: "Helvetica Neue", size: 15)
         messageLabel.textAlignment = .center
         messageLabel.center = CGPoint(x: overlayView.bounds.width / 2, y: overlayView.bounds.height / 2)
         overlayView.addSubview(messageLabel)

@@ -39,8 +39,9 @@ class TextFieldAnimation
         method to show success animation
      */
     static func successAnimation(textField:UITextField){
+        let green = UIColor(red: 129/255, green: 234/255, blue: 119/255, alpha: 1.0)
         textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.green.cgColor
+        textField.layer.borderColor = green.cgColor
         textField.layer.cornerRadius = 5
         scapeUpAnimation(textField: textField)
     }

@@ -226,6 +226,25 @@ class CompoundSavingsViewController: UIViewController, UIViewControllerTransitio
             }
         }
         
+        if principleAmount != nil && futureAmount != nil {
+            if principleAmount >= futureAmount {
+                ToastView.shared.showToastMessage(self.view, message: "Principle Amount can't be greater than Future Savings")
+                TextFieldAnimation.errorAnimation(textField: txtPrincipleAmount)
+                TextFieldAnimation.errorAnimation(textField: txtFutureAmount)
+                return
+            }
+        }
+        
+        if principleAmount != nil && futureAmount != nil && monthlyPayment != nil {
+            if ( principleAmount + monthlyPayment ) >= futureAmount {
+                ToastView.shared.showToastMessage(self.view, message: "Future amount is less than Principle and Monthly Amount")
+                TextFieldAnimation.errorAnimation(textField: txtPrincipleAmount)
+                TextFieldAnimation.errorAnimation(textField: txtMonthlyPaymentAmount)
+                TextFieldAnimation.errorAnimation(textField: txtFutureAmount)
+                return
+            }
+        }
+        
         switch emptyField {
             
         case .futureAmount:
